@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css"
+          type="text/css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css"
+          rel="stylesheet"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+      
+
+body {
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+  font-size:90%;
+  color: black;
+}
+
+p {
+  margin: 0.5em;
+}
+
+pre code {
+  font-family: "Monaco";
+  font-size: 100%;
+}
+
+img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin:10px;
+}
+
+h1, h2, h3 {
+  border-bottom:thin solid black;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+h1 {
+  font-style:italic;
+  font-size:130%;
+}
+
+h2 {
+  font-size:110%;
+}
+
+h3 {
+  font-size:100%;
+}
+
+
+
+      
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.footer {
+  background: white;
+  text-align: right;
+}
+.content {
+  flex: 1;
+  overflow: auto;
+}
+
+
+
+    </style>
+  </head>
+
+  
+  
+
+  <div class="ui fixed top pointing inverted stackable menu labmenu">
+    <header class="header item">
+      <i id="toc" class="sitemap icon"></i>
+      
+        <a href="../../index.html"> Networking with Volley & Retrofit  </a>
+      
+    </header>
+    <div class="right tab-menu menu">
+      
+        <a class="item" data-tab="Lab-06-b">
+          Lab-06-b
+        </a>
+      
+        <a class="item" data-tab="01">
+          01
+        </a>
+      
+        <a class="item" data-tab="02">
+          02
+        </a>
+      
+        <a class="item" data-tab="03">
+          03
+        </a>
+      
+        <a class="item" data-tab="04">
+          04
+        </a>
+      
+        <a class="item" data-tab="Solution">
+          Solution
+        </a>
+      
+    </div>
+  </div>
+
+
+  
+
+  <div class="ui pushable">
+    <div class="ui inverted labeled icon left inline vertical sidebar menu">
+      <br><br>
+      
+        
+          
+            <a class="item"
+               href="http://ddrohan.github.io/wit-mad-msc-2019//topic01-overview-and-tools/unit-1/book-coffeemate-lab-01/index.html">Lab-01 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://ddrohan.github.io/wit-mad-msc-2019//topic02-ui-design/unit-1/book-coffeemate-lab-02/index.html">Lab-02 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://ddrohan.github.io/wit-mad-msc-2019//topic02-ui-design/unit-1/book-coffeemate-lab-03/index.html">Lab-03 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://ddrohan.github.io/wit-mad-msc-2019//topic02-ui-design/unit-2/book-coffeemate-lab-04/index.html">Lab-04 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://ddrohan.github.io/wit-mad-msc-2019//topic03-persistence/unit-1/book-coffeemate-lab-05-a/index.html">Lab-05-a </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://ddrohan.github.io/wit-mad-msc-2019//topic03-persistence/unit-1/book-coffeemate-lab-05-b/index.html">Lab-05-b </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://ddrohan.github.io/wit-mad-msc-2019//topic04-networking/unit-1/book-coffeemate-lab-06-a/index.html">Lab-06-a </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://ddrohan.github.io/wit-mad-msc-2019//topic04-networking/unit-1/book-coffeemate-lab-06-b/index.html">Lab-06-b </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://ddrohan.github.io/wit-mad-msc-2019//topic05-google-services/unit-1/book-coffeemate-lab-07/index.html">Lab-07 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://ddrohan.github.io/wit-mad-msc-2019//topic05-google-services/unit-1/book-coffeemate-lab-08/index.html">Lab-08 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://ddrohan.github.io/wit-mad-msc-2019//topic06-firebase/unit-1/book-coffeemate-lab-09/index.html">Lab-09 </a>
+          
+        
+      
+    </div>
+    <div class="pusher" tabindex="-1">
+      <div class="ui basic segment">
+        <br>
+        
+          <div class="ui tab segment lab" data-tab="Lab-06-b">
+            <h1>Objectives</h1>
+<p>This lab continues our Case Study <strong>CoffeeMate</strong> with the introduction of a <strong>RETROFIT</strong> API to interact with a Node Web Server.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="01">
+            <h1>Setup - Starter Code, Configuring Retrofit &amp; Getting All Coffees</h1>
+<p>This is the CoffeeMate Android app as we left it with the <strong>Volley</strong> lab : <a href="archives/CoffeeMate.6a.0.Solution.zip">CoffeeMate.6a.0</a>.</p>
+<p>If you have completed that lab, then you can use your own project. If not, use the above archive.</p>
+<p>First we need to add a few <code>dependencies</code> so open your <code>app/build.gradle</code> and include the following</p>
+<pre><code class="lang-xml">implementation &#39;com.squareup.retrofit2:retrofit:2.3.0&#39;
+implementation &#39;com.squareup.retrofit2:converter-gson:2.3.0&#39;</code></pre>
+<p>Open your <code>androidManifext.xml</code> file - and confirm/insert this new permission entry:</p>
+<pre><code class="lang-xml">    &lt;uses-permission android:name=&quot;android.permission.INTERNET&quot;/&gt;</code></pre>
+<p>This should be entered before the <code>&lt;application&gt;</code> element as shown here:</p>
+<pre><code class="lang-xml">&lt;manifest...
+
+    &lt;uses-permission android:name=&quot;android.permission.INTERNET&quot;/&gt;
+
+    &lt;application
+      ....
+      ....
+      ....
+&lt;/manifest&gt;</code></pre>
+<p>and make sure to &#39;Sync&#39; your project.</p>
+<p>NOTE : If you get a <code>Clear Text Traffic</code> Error you&#39;ll need to add</p>
+<pre><code class="lang-xml">android:usesCleartextTraffic=&quot;true&quot;</code></pre>
+<p>to your <strong>application</strong> tag, in your manifest file.</p>
+<p>Next, In the <strong>api</strong> package, add the following class to represent the JSON response</p>
+<pre><code class="lang-java">public class CoffeeWrapper {
+    public int status;
+    public String message;
+    public List&lt;Coffee&gt; data;
+}</code></pre>
+<p>Here&#39;s what our json looks like from the server.</p>
+<p><img src="img/coffeewrapper.png" alt=""></p>
+<p>and then introduce this <code>CoffeeService</code> interface, and fix any import errors</p>
+<pre><code class="lang-java">public interface CoffeeService
+{
+    @GET(&quot;/coffees&quot;)
+    Call&lt;CoffeeWrapper&gt; getAll();
+
+    @GET(&quot;/coffees/{id}&quot;)
+    Call&lt;CoffeeWrapper&gt; get(@Path(&quot;id&quot;) String id);
+
+    @DELETE(&quot;/coffees/{id}&quot;)
+    Call&lt;CoffeeWrapper&gt; delete(@Path(&quot;id&quot;) String id);
+
+    @POST(&quot;/coffees&quot;)
+    Call&lt;CoffeeWrapper&gt; post(@Body Coffee coffee);
+
+    @PUT(&quot;/coffees/{id}&quot;)
+    Call&lt;CoffeeWrapper&gt; put(@Path(&quot;id&quot;) String id,
+                     @Body Coffee coffee);
+}</code></pre>
+<p>This class will server as a local interface for interacting with the remote service (deployed to heroku).</p>
+<p>Next, in your <code>CoffeeMateApp</code> add</p>
+<pre><code class="lang-java">public CoffeeService coffeeService;
+public String serviceURL = &quot;http://coffeemate-nodeserver.herokuapp.com&quot;;</code></pre>
+<p>and in your <strong>onCreate()</strong> add</p>
+<pre><code class="lang-java">Gson gson = new GsonBuilder().create();
+
+OkHttpClient okHttpClient = new OkHttpClient.Builder()
+            .connectTimeout(30, TimeUnit.SECONDS)
+            .writeTimeout(30, TimeUnit.SECONDS)
+            .readTimeout(30, TimeUnit.SECONDS)
+            .build();
+
+Retrofit retrofit = new Retrofit.Builder()
+            .baseUrl(serviceURL)
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .client(okHttpClient)
+            .build();
+
+coffeeService = retrofit.create(CoffeeService.class);</code></pre>
+<p>Make your <code>CoffeeFragment</code> implement the following interface</p>
+<pre><code class="lang-java">Callback&lt;CoffeeWrapper&gt;</code></pre>
+<p><img src="img/methods.png" alt=""></p>
+<p>add</p>
+<pre><code class="lang-java">public Call&lt;CoffeeWrapper&gt;  callRetrieve;</code></pre>
+<p>and</p>
+<pre><code class="lang-java">public void getAllCoffees() {
+    callRetrieve = app.coffeeService.getAll();
+    callRetrieve.enqueue(this);
+  }</code></pre>
+<p>and finally, add the above call to your <strong>onResume()</strong>, replacing your <strong><em>Volley APi</em></strong> call.</p>
+<p>For completeness, add the following to your <code>Base</code> class</p>
+<pre><code class="lang-java">public void showLoader(String message) {
+     if (!loader.isShowing()) {
+         if(message != null)loader.setTitle(message);
+         loader.show();
+     }
+ }
+
+ public void hideLoader() {
+     if (loader.isShowing())
+         loader.dismiss();
+ }</code></pre>
+<p>and then <strong>DELETE</strong> (yes, Delete) both your <code>CoffeeApi</code> and <code>VolleyListener</code> classes.</p>
+<p>Don&#39;t forget to remove/comment out any other <strong>Volley</strong> references (we&#39;ll be refactoring the app as we go), fix any errors and run your app to confirm you can still download/Get all the coffees on the server (along with your favourites).</p>
+<p>For Reference, your <strong>onResume()</strong> should look like this</p>
+<pre><code class="lang-java">public void onResume() {
+  super.onResume();
+  getAllCoffees();
+  updateView();
+}</code></pre>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="02">
+            <h1>Adding a Coffee to our Server</h1>
+<p>At this stage, we&#39;ve made a simple <strong>GET</strong> request on the Server - now let&#39;s make some <strong>POST</strong> Requests using <strong>Retrofit</strong> and add a coffee to the list maintained on the server.</p>
+<p>First, ensure your <code>AddFragment</code> implements the necessary interface</p>
+<pre><code class="lang-java">Callback&lt;CoffeeWrapper&gt;</code></pre>
+<p>and add the following to your list of variables</p>
+<pre><code class="lang-java">public Call&lt;CoffeeWrapper&gt;  callCreate;</code></pre>
+<p>Now, using something like</p>
+<pre><code class="lang-java">callCreate = app.coffeeService.post(c);
+callCreate.enqueue(this);</code></pre>
+<p>see can you successfully implement the &#39;Add&#39; feature, but using <strong>RETROFIT</strong>.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="03">
+            <h1>Updating a Coffee on the Server</h1>
+<p> Updating a coffee isn&#39;t as simple and straightforward as the last step, in that we need to</p>
+<ul>
+<li><p>display the coffee details (that the user has selected) on the Edit Screen via a <strong>GET</strong> request</p>
+</li>
+<li><p>send a <strong>PUT</strong> request to update our coffee on the server</p>
+</li>
+<li><p>return the user to the screen they were on before they chose to edit their coffee (<strong>NOT</strong> the Home Screen as with the &#39;Add&#39; option)</p>
+</li>
+</ul>
+<p>You might think the first thing to do is have our <code>EditFragment</code> implement the necessary interface (as we have done previously) with</p>
+<pre><code class="lang-java">Callback&lt;CoffeeWrapper&gt;</code></pre>
+<p>but we need to make multiple different calls (GETs &amp; PUTs) in the one <code>EditFragment</code>, so simply implementing the interface won&#39;t meet our needs in this instance.</p>
+<p>We need to create <strong>Anonymous</strong> Retrofit calls and run them at the required times, so first, add the following to your declarations</p>
+<pre><code class="lang-java">public Call&lt;CoffeeWrapper&gt; callGet, callUpdate;</code></pre>
+<p>Next, replace, and complete your <strong>onCreate()</strong> with the following</p>
+<pre><code class="lang-java">@Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        app = (CoffeeMateApp) getActivity().getApplication();
+
+        if (getArguments() != null) {
+            callGet = app.coffeeService.get(getArguments().getString(&quot;coffeeId&quot;));
+            callGet.enqueue(new Callback&lt;CoffeeWrapper&gt;() {
+                @Override
+                public void onResponse(Call&lt;CoffeeWrapper&gt; call, Response&lt;CoffeeWrapper&gt; response) {
+                    // Get the body of the response
+                    // assign it to the local Coffee variable &#39;aCoffee&#39;
+                    // update your UI to display the coffee details to edit
+                }
+
+                @Override
+                public void onFailure(Call&lt;CoffeeWrapper&gt; call, Throwable t) {
+
+                }
+            });
+        }
+    }</code></pre>
+<p>Once you can see the coffee details, the last thing to do is update the coffee on the server and return the user back to the screen there were previously on.</p>
+<p>You&#39;ll need to do something like this</p>
+<pre><code class="lang-java">callUpdate = app.coffeeService.put(aCoffee._id,aCoffee);
+callUpdate.enqueue(new Callback&lt;CoffeeWrapper&gt;() . . .);</code></pre>
+<p>so without referring to the lecture material (not too much anyway) have a go at completing this step.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="04">
+            <h1>Deleting Coffees from the Server</h1>
+<p>This step isn&#39;t as simple as the equivalent step in the <strong>VOLLEY</strong> lab as we need to create another <strong>Anonymous</strong> call for deleting, as our <code>CoffeeFragment</code> already implements our interface - but we&#39;ll try and make it as simple as we can :)</p>
+<p>First, add the following to your declarations</p>
+<pre><code class="lang-java">public Call&lt;CoffeeWrapper&gt; callDelete;</code></pre>
+<p>Next, add, and complete the following method (there&#39;s very little to do here)</p>
+<pre><code class="lang-java">public void deleteCoffee(String id) {
+      callDelete = app.coffeeService.delete(id);
+      callDelete.enqueue(new Callback&lt;CoffeeWrapper&gt;() {
+          @Override
+          public void onResponse(Call&lt;CoffeeWrapper&gt; call, Response&lt;CoffeeWrapper&gt; response) {
+
+          }
+
+          @Override
+          public void onFailure(Call&lt;CoffeeWrapper&gt; call, Throwable t) {
+
+          }
+      });
+  }</code></pre>
+<p>You then need to call the above method wherever you were making your <strong>VOLLEY</strong> &#39;delete&#39; requests.</p>
+<p>To get you started, you&#39;ll need this in your <strong>deleteCoffees()</strong> method</p>
+<pre><code class="lang-java">deleteCoffee(listAdapter.getItem(i)._id);</code></pre>
+<p>and this in your <strong>onCoffeeDelete()</strong></p>
+<pre><code class="lang-java">deleteCoffee(coffee._id);</code></pre>
+<p>If you notice your list isn&#39;t updating after you delete 1 or more coffees make sure you&#39;re calling</p>
+<pre><code class="lang-java">getAllCoffees()</code></pre>
+<p>after you delete, to get the latest version of your list. </p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="Solution">
+            <h1>Solution</h1>
+<p>This is the solution which uses a Web Service and <strong>Retrofit</strong> to manage the Coffees in the app:</p>
+<ul>
+<li><a href="archives/CoffeeMate.6b.0.Solution.zip">CoffeeMate.6b.0</a></li>
+</ul>
+
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <script>
+    $(document).on('keydown', function(e) {
+  e = e || window.event;
+  var nextTab;
+  switch (e.which || e.keyCode) {
+    case 37: // left
+      nextTab = $('.tab-menu a[data-tab].active').prev('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').last();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+
+    case 39: // right
+      nextTab = $('.tab-menu a[data-tab].active').next('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').first();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+  }
+});
+
+    $(document).ready(function() {
+  $('img').addClass('ui image');
+
+  $('.ui.embed').embed();
+
+  const $images = $('.lab img');
+  jQuery.each($images, function(i) {
+    if ($images[i].alt.length > 0) {
+      const divImg = $(document.createElement('div')).addClass(
+        'ui basic segment',
+      );
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass(
+        'ui blue ribbon label',
+      );
+      divLabel.append($images[i].alt);
+      $(divLabel).insertBefore($images[i]);
+    }
+  });
+
+  $('.ui.menu .item').tab({
+    history: true,
+    historyType: 'hash',
+  });
+
+  $('.popup').popup();
+
+  $('.ui.sidebar')
+    .sidebar({ context: $('.pushable') })
+    .sidebar('setting', 'transition', 'slide out')
+    .sidebar('attach events', '#toc');
+});
+
+  </script>
+
+
+
+  <div class="ui bottom fixed borderless right menu">
+    <div class="ui right small menu">
+      <div class="ui tiny basic message segment">
+         Powered by <a href="https://github.com/edeleastar/tutors-ts">tutors-ts.</a> 
+      </div>
+    </div>
+  </div>
+
+  </body>
+
+</html>

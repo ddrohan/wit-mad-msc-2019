@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css"
+          type="text/css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css"
+          rel="stylesheet"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+      
+
+body {
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+  font-size:90%;
+  color: black;
+}
+
+p {
+  margin: 0.5em;
+}
+
+pre code {
+  font-family: "Monaco";
+  font-size: 100%;
+}
+
+img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin:10px;
+}
+
+h1, h2, h3 {
+  border-bottom:thin solid black;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+h1 {
+  font-style:italic;
+  font-size:130%;
+}
+
+h2 {
+  font-size:110%;
+}
+
+h3 {
+  font-size:100%;
+}
+
+
+
+      
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.footer {
+  background: white;
+  text-align: right;
+}
+.content {
+  flex: 1;
+  overflow: auto;
+}
+
+
+
+    </style>
+  </head>
+
+  
+  
+
+  <div class="ui fixed top pointing inverted stackable menu labmenu">
+    <header class="header item">
+      <i id="toc" class="sitemap icon"></i>
+      
+        <a href="../../index.html"> Data Persistence using Shared Prefs, SQLite & Realm  </a>
+      
+    </header>
+    <div class="right tab-menu menu">
+      
+        <a class="item" data-tab="Lab-05-b">
+          Lab-05-b
+        </a>
+      
+        <a class="item" data-tab="01">
+          01
+        </a>
+      
+        <a class="item" data-tab="02">
+          02
+        </a>
+      
+        <a class="item" data-tab="03">
+          03
+        </a>
+      
+        <a class="item" data-tab="04">
+          04
+        </a>
+      
+        <a class="item" data-tab="Solution">
+          Solution
+        </a>
+      
+    </div>
+  </div>
+
+
+  
+
+  <div class="ui pushable">
+    <div class="ui inverted labeled icon left inline vertical sidebar menu">
+      <br><br>
+      
+        
+          
+            <a class="item"
+               href="http://ddrohan.github.io/wit-mad-msc-2019//topic01-overview-and-tools/unit-1/book-coffeemate-lab-01/index.html">Lab-01 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://ddrohan.github.io/wit-mad-msc-2019//topic02-ui-design/unit-1/book-coffeemate-lab-02/index.html">Lab-02 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://ddrohan.github.io/wit-mad-msc-2019//topic02-ui-design/unit-1/book-coffeemate-lab-03/index.html">Lab-03 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://ddrohan.github.io/wit-mad-msc-2019//topic02-ui-design/unit-2/book-coffeemate-lab-04/index.html">Lab-04 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://ddrohan.github.io/wit-mad-msc-2019//topic03-persistence/unit-1/book-coffeemate-lab-05-a/index.html">Lab-05-a </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://ddrohan.github.io/wit-mad-msc-2019//topic03-persistence/unit-1/book-coffeemate-lab-05-b/index.html">Lab-05-b </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://ddrohan.github.io/wit-mad-msc-2019//topic04-networking/unit-1/book-coffeemate-lab-06-a/index.html">Lab-06-a </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://ddrohan.github.io/wit-mad-msc-2019//topic04-networking/unit-1/book-coffeemate-lab-06-b/index.html">Lab-06-b </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://ddrohan.github.io/wit-mad-msc-2019//topic05-google-services/unit-1/book-coffeemate-lab-07/index.html">Lab-07 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://ddrohan.github.io/wit-mad-msc-2019//topic05-google-services/unit-1/book-coffeemate-lab-08/index.html">Lab-08 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://ddrohan.github.io/wit-mad-msc-2019//topic06-firebase/unit-1/book-coffeemate-lab-09/index.html">Lab-09 </a>
+          
+        
+      
+    </div>
+    <div class="pusher" tabindex="-1">
+      <div class="ui basic segment">
+        <br>
+        
+          <div class="ui tab segment lab" data-tab="Lab-05-b">
+            <h1>Objectives</h1>
+<p>This lab continues our Case Study <b>CoffeeMate</b> and implements persistence (through a Realm Database) in an Android App.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="01">
+            <h1>Setup - Starter Code</h1>
+<p>We&#39;ll use similar starter code as we did for the SQLite Lab, which you can download here <a href="archives/CoffeeMate.5b.0.Starter.zip">CoffeeMate.5b.0.Starter</a>.</p>
+<p>In this lab, you are required to do the following:</p>
+<ul>
+<li>Add Database Support to CoffeeMate to manage our coffees which will allow them to be persisted in a Realm database</li>
+</ul>
+<p>The following steps will guide you through these requirements, but first you&#39;ll need to add a helper class to make this lab a bit easier.</p>
+<p>Go ahead and add the following dependency to your <code>project/build.gradle</code></p>
+<pre><code class="lang-xml">classpath &quot;io.realm:realm-gradle-plugin:5.8.0&quot;</code></pre>
+<p>and this to your <code>app/build.gradle</code> (at the top)</p>
+<pre><code class="lang-xml">apply plugin: &#39;realm-android&#39;</code></pre>
+<p>and then this in the dependencies (which we&#39;ll be using later)</p>
+<pre><code class="lang-xml">implementation &#39;io.realm:android-adapters:2.1.1&#39;</code></pre>
+<p>Next, update your <code>Coffee</code> class with the following</p>
+<pre><code class="lang-java">public class Coffee extends RealmObject
+{
+    @PrimaryKey
+    public String coffeeId;
+    public String name;
+    public String shop;
+    public double rating;
+    public double price;
+    public boolean favourite;
+
+
+    public Coffee() {}
+
+    public Coffee(String name, String shop, double rating, double price, boolean fav)
+    {
+        this.coffeeId = UUID.randomUUID().toString();
+        this.name = name;
+        this.shop = shop;
+        this.rating = rating;
+        this.price = price;
+        this.favourite = fav;
+    }
+
+    @Override
+    public String toString() {
+        return &quot;Coffee [name=&quot; + name
+                + &quot;, shop =&quot; + shop + &quot;, rating=&quot; + rating + &quot;, price=&quot; + price
+                + &quot;, fav =&quot; + favourite + &quot;]&quot;;
+    }
+}</code></pre>
+<p>and finally add the following class to a new <code>ie.cm.db</code> package (like you did in the previous lab)</p>
+<pre><code class="lang-java">public class DBManager {
+
+    public Realm realmDatabase;
+
+    public DBManager(Context context) {
+        Realm.init(context);
+
+        RealmConfiguration config = new RealmConfiguration.Builder()
+                .name(&quot;coffees.realm&quot;)
+                .schemaVersion(1)
+                .build();
+
+        Realm.setDefaultConfiguration(config);
+    }
+
+    public void open() throws SQLException {
+        realmDatabase = Realm.getDefaultInstance();
+    }
+
+    public void close() {
+        realmDatabase.close();
+    }
+
+    public void add(Coffee c) {
+        realmDatabase.beginTransaction();
+        realmDatabase.copyToRealm(c);
+        realmDatabase.commitTransaction();
+    }
+
+    public void update(Coffee c, String name ,String shop, double price , double rating)
+    {
+        realmDatabase.beginTransaction();
+        c.name = name;
+        c.shop = shop;
+        c.price = price;
+        c.rating = rating;
+        realmDatabase.commitTransaction();
+    }
+
+    public void setFavourite(Coffee c, boolean value)
+    {
+        realmDatabase.beginTransaction();
+        c.favourite = value;
+        realmDatabase.commitTransaction();
+    }
+
+    // If we wanted to update individual fields we could
+    // do something like this, for example
+    public void updateName(String name, String coffeeId)
+    {
+        Coffee c = realmDatabase.where(Coffee.class)
+                .equalTo(&quot;coffeeId&quot;,coffeeId)
+                .findFirst();
+        realmDatabase.beginTransaction();
+        c.name = name;
+        realmDatabase.commitTransaction();
+    }
+
+    public void delete(String coffeeId) {
+        realmDatabase.beginTransaction();
+        realmDatabase.where(Coffee.class)
+                .equalTo(&quot;coffeeId&quot;,coffeeId)
+                .findAll()
+                .deleteAllFromRealm();
+        realmDatabase.commitTransaction();
+    }
+
+    public RealmResults&lt;Coffee&gt; getAll() {
+        RealmResults&lt;Coffee&gt; result = realmDatabase.where(Coffee.class)
+                .findAll();
+        return result;
+    }
+
+    public RealmResults&lt;Coffee&gt; getFavourites() {
+       return realmDatabase.where(Coffee.class)
+               .equalTo(&quot;favourite&quot;,true)
+               .findAll();
+    }
+
+    public Coffee get(String coffeeId) {
+        return realmDatabase.where(Coffee.class)
+                .equalTo(&quot;coffeeId&quot;,coffeeId)
+                .findAll()
+                .first();
+    }
+
+    public void reset() {
+        realmDatabase.beginTransaction();
+        realmDatabase.where(Coffee.class)
+                .findAll()
+                .deleteAllFromRealm();
+        realmDatabase.commitTransaction();
+    }
+}</code></pre>
+<p>There&#39;ll be a few import errors to fix, but that&#39;s about it for the setup.</p>
+<p>Take a few moments to investigate the class and familiarise yourself with the methods you&#39;ll be using. There are a number of classes you&#39;ll need to modify to add database support to your project.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="02">
+            <h1>App Refactoring - Adding Realm Database Support</h1>
+<p>Once you&#39;ve completed the setup, similar to the previous step, this step is also relatively straight forward - all you have to do is replace the method calls that manages the <strong>coffeeList</strong> with the respective <strong>dbManager</strong> Realm calls.</p>
+<p> The first thing you need to do is create an instance of <strong><em>DBManager</em></strong> in <strong>CofeeMateApp.java</strong> and both open/close the database when necessary.</p>
+<p>Our DBManager instance inside our Application Object should now look like this :</p>
+<pre><code class="lang-java">public class CoffeeMateApp extends Application {    
+    //public List &lt;Coffee&gt;  coffeeList = new ArrayList&lt;Coffee&gt;();    
+    public DBManager dbManager = new DBManager(this);    
+
+    @Override    
+    public void onCreate()    
+    {        
+        super.onCreate();        
+        Log.v(&quot;coffeemate&quot;, &quot;CoffeeMate App Started&quot;);        
+        dbManager.open();    
+    }    
+
+    @Override    
+    public void onTerminate()
+    {        
+    super.onTerminate();        
+    dbManager.close();    
+    }
+}</code></pre>
+<p>Once you make this change (and build the project) you&#39;ll get a number of errors, which actually indicates which classes you need to now update and add the database calls (and remove the coffeeList calls). Each error requires only one line of code to be fixed, so have a go and updating each of the classes (and we&#39;ll have a look at the solution at the end of the Practical Lab).</p>
+<p>Once you fix all the errors, and run the app again, you should see your coffee list - but this time those coffees are stored in a Realm database.</p>
+<p>And as a final check, if you call the <strong><em>setupCoffees()</em></strong> method of the <strong><em>DBManager</em></strong> reference in your <strong>CoffeeMateApp</strong> reference &#39;app&#39; (replacing the existing setup method in &#39;Home&#39;) you should see the something like the following list:</p>
+<p><img src="img/realmscreen1.png" alt=""></p>
+<p>and if you choose the menu (assuming you&#39;ve downloaded the starter code)</p>
+<p><img src="img/realmscreen2.png" alt=""></p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="03">
+            <h1>App Refactoring - View Favourites &amp; Filtering</h1>
+<p>If you&#39;ve carried out any kind of testing at all, you&#39;ll see that the app crashes on &#39;View Favourites&#39;, this is due to the fact that we are now using <code>Realm</code> objects and our <code>CoffeeFilter</code> expects to filter on <code>List</code> objects.</p>
+<p>To rectify this, replace your existing <code>CoffeeFilter</code> with the following (fix any import errors) and test again.</p>
+<pre><code class="lang-java">public class CoffeeFilter extends Filter {
+    private OrderedRealmCollection&lt;Coffee&gt;         originalCoffeeList;
+    private RealmResults&lt;Coffee&gt; realmCoffeResults;
+    private CoffeeListAdapter     adapter;
+    private boolean favourites = false;
+    private DBManager dbManager;
+
+    public CoffeeFilter(DBManager dbManager, CoffeeListAdapter adapter) {
+        super();
+        this.dbManager = dbManager;
+        this.originalCoffeeList = dbManager.getAll();
+        this.adapter = adapter;
+    }
+
+    public void setFilter(String filterText) {
+        //favourites = filterText.equals(&quot;all&quot;) ? false : true;
+        favourites = !filterText.equals(&quot;all&quot;);
+    }
+
+    @Override
+    protected FilterResults performFiltering(CharSequence prefix) {
+        return new FilterResults();
+    }
+
+    @Override
+    protected void publishResults(CharSequence prefix, FilterResults results) {
+
+        if ((prefix == null || prefix.length() == 0))
+                if(!favourites)
+                    realmCoffeResults = dbManager.getAll();
+                else
+                    realmCoffeResults = dbManager.getFavourites();
+        else {
+            realmCoffeResults = dbManager.realmDatabase
+                    .where(Coffee.class)
+                    .equalTo(&quot;favourite&quot;, favourites)
+                    .contains(&quot;name&quot;, prefix.toString(), Case.INSENSITIVE)
+                    .or()
+                    .contains(&quot;shop&quot;, prefix.toString(), Case.INSENSITIVE)
+                    .findAll();
+        }
+
+        adapter.coffeeList = realmCoffeResults;
+
+        if (adapter.coffeeList.size() &gt; 0)
+            adapter.notifyDataSetChanged();
+        else {
+            adapter.notifyDataSetInvalidated();
+            adapter.coffeeList = originalCoffeeList;
+        }
+    }
+}</code></pre>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="04">
+            <h1>App Refactoring - Editing / Deleting Multiple Coffees</h1>
+<p>After some more testing you may also find that your adapter isn&#39;t functioning as expected in certain circumstances when deleting multiple coffees. This is due to the fact that our data is now persistent, so depending on &#39;where you are&#39;, so to speak, some slight refactoring of our <b>deleteCoffees()</b> is required, like so</p>
+<pre><code class="lang-java">public void deleteCoffees(ActionMode actionMode)
+    {
+        Coffee c = null;
+        for (int i = listAdapter.getCount() - 1; i &gt;= 0; i--)
+            if (listView.isItemChecked(i))
+                activity.app.dbManager.delete(listAdapter.getItem(i).coffeeId); //delete from DB
+
+        actionMode.finish();
+
+        if (favourites) {
+            //Update the filters data
+            coffeeFilter = new CoffeeFilter(activity.app.dbManager,listAdapter);
+            coffeeFilter.setFilter(&quot;favourites&quot;);
+            coffeeFilter.filter(null);
+        }
+        listAdapter.notifyDataSetChanged();
+    }</code></pre>
+<p>Just for completeness, and to keep thing in sync with the previous lab, if you experience any rendering issues with your fragment, move</p>
+<pre><code class="lang-java">listAdapter = new CoffeeListAdapter(activity, this, activity.app.dbManager.getAll());
+ coffeeFilter = new CoffeeFilter(activity.app.dbManager.getAll(),&quot;all&quot;,listAdapter);</code></pre>
+<p>from the <code>onCreate()</code> method to the <code>onCreateView()</code> method and make sure you call</p>
+<pre><code class="lang-java"> super.onCreateView(inflater,container,savedInstanceState);</code></pre>
+<p>in the subclass <code>SearchFragment</code> method, to avoid a NullPointerException on setting the filter.</p>
+<p>Test again to confirm and go have a coffee!</p>
+<p>Well Done!</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="Solution">
+            <h1>Solution</h1>
+<p>This is the solution to the lab:</p>
+<ul>
+<li><a href="archives/CoffeeMate.5b.0.Solution.zip">CoffeeMate.5b.0.Solution.Realm</a></li>
+</ul>
+
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <script>
+    $(document).on('keydown', function(e) {
+  e = e || window.event;
+  var nextTab;
+  switch (e.which || e.keyCode) {
+    case 37: // left
+      nextTab = $('.tab-menu a[data-tab].active').prev('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').last();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+
+    case 39: // right
+      nextTab = $('.tab-menu a[data-tab].active').next('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').first();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+  }
+});
+
+    $(document).ready(function() {
+  $('img').addClass('ui image');
+
+  $('.ui.embed').embed();
+
+  const $images = $('.lab img');
+  jQuery.each($images, function(i) {
+    if ($images[i].alt.length > 0) {
+      const divImg = $(document.createElement('div')).addClass(
+        'ui basic segment',
+      );
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass(
+        'ui blue ribbon label',
+      );
+      divLabel.append($images[i].alt);
+      $(divLabel).insertBefore($images[i]);
+    }
+  });
+
+  $('.ui.menu .item').tab({
+    history: true,
+    historyType: 'hash',
+  });
+
+  $('.popup').popup();
+
+  $('.ui.sidebar')
+    .sidebar({ context: $('.pushable') })
+    .sidebar('setting', 'transition', 'slide out')
+    .sidebar('attach events', '#toc');
+});
+
+  </script>
+
+
+
+  <div class="ui bottom fixed borderless right menu">
+    <div class="ui right small menu">
+      <div class="ui tiny basic message segment">
+         Powered by <a href="https://github.com/edeleastar/tutors-ts">tutors-ts.</a> 
+      </div>
+    </div>
+  </div>
+
+  </body>
+
+</html>

@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css"
+          type="text/css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css"
+          rel="stylesheet"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+      
+
+body {
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+  font-size:90%;
+  color: black;
+}
+
+p {
+  margin: 0.5em;
+}
+
+pre code {
+  font-family: "Monaco";
+  font-size: 100%;
+}
+
+img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin:10px;
+}
+
+h1, h2, h3 {
+  border-bottom:thin solid black;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+h1 {
+  font-style:italic;
+  font-size:130%;
+}
+
+h2 {
+  font-size:110%;
+}
+
+h3 {
+  font-size:100%;
+}
+
+
+
+      
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.footer {
+  background: white;
+  text-align: right;
+}
+.content {
+  flex: 1;
+  overflow: auto;
+}
+
+
+
+    </style>
+  </head>
+
+  
+  
+
+  <div class="ui fixed top pointing inverted stackable menu labmenu">
+    <header class="header item">
+      <i id="toc" class="sitemap icon"></i>
+      
+        <a href="../../index.html"> Overview & Tools  </a>
+      
+    </header>
+    <div class="right tab-menu menu">
+      
+        <a class="item" data-tab="Lab-01">
+          Lab-01
+        </a>
+      
+        <a class="item" data-tab="01">
+          01
+        </a>
+      
+        <a class="item" data-tab="02">
+          02
+        </a>
+      
+        <a class="item" data-tab="03">
+          03
+        </a>
+      
+        <a class="item" data-tab="04">
+          04
+        </a>
+      
+        <a class="item" data-tab="05">
+          05
+        </a>
+      
+        <a class="item" data-tab="06">
+          06
+        </a>
+      
+        <a class="item" data-tab="07">
+          07
+        </a>
+      
+        <a class="item" data-tab="Exercises">
+          Exercises
+        </a>
+      
+    </div>
+  </div>
+
+
+  
+
+  <div class="ui pushable">
+    <div class="ui inverted labeled icon left inline vertical sidebar menu">
+      <br><br>
+      
+        
+          
+            <a class="item"
+               href="http://ddrohan.github.io/wit-mad-msc-2019//topic01-overview-and-tools/unit-1/book-coffeemate-lab-01/index.html">Lab-01 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://ddrohan.github.io/wit-mad-msc-2019//topic02-ui-design/unit-1/book-coffeemate-lab-02/index.html">Lab-02 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://ddrohan.github.io/wit-mad-msc-2019//topic02-ui-design/unit-1/book-coffeemate-lab-03/index.html">Lab-03 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://ddrohan.github.io/wit-mad-msc-2019//topic02-ui-design/unit-2/book-coffeemate-lab-04/index.html">Lab-04 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://ddrohan.github.io/wit-mad-msc-2019//topic03-persistence/unit-1/book-coffeemate-lab-05-a/index.html">Lab-05-a </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://ddrohan.github.io/wit-mad-msc-2019//topic03-persistence/unit-1/book-coffeemate-lab-05-b/index.html">Lab-05-b </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://ddrohan.github.io/wit-mad-msc-2019//topic04-networking/unit-1/book-coffeemate-lab-06-a/index.html">Lab-06-a </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://ddrohan.github.io/wit-mad-msc-2019//topic04-networking/unit-1/book-coffeemate-lab-06-b/index.html">Lab-06-b </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://ddrohan.github.io/wit-mad-msc-2019//topic05-google-services/unit-1/book-coffeemate-lab-07/index.html">Lab-07 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://ddrohan.github.io/wit-mad-msc-2019//topic05-google-services/unit-1/book-coffeemate-lab-08/index.html">Lab-08 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://ddrohan.github.io/wit-mad-msc-2019//topic06-firebase/unit-1/book-coffeemate-lab-09/index.html">Lab-09 </a>
+          
+        
+      
+    </div>
+    <div class="pusher" tabindex="-1">
+      <div class="ui basic segment">
+        <br>
+        
+          <div class="ui tab segment lab" data-tab="Lab-01">
+            <h1>Objectives</h1>
+<p>This lab introduces our Case Study <b>CoffeeMate</b> with a look at some of the basic features we can implement in an Android App.</p>
+<p>In this Lab, you will be required to develop the first version of our Case Study, <b>CoffeeMate.1.0</b>. We&#39;ll build on this project over the coming weeks &amp; months. On completion of this lab you&#39;ll be able to</p>
+<ul>
+<li><p>add multiple activities &amp; associated layouts to an Android project</p>
+</li>
+<li><p>switch between &#39;screens&#39;</p>
+</li>
+<li><p>display a simple dialog window</p>
+</li>
+<li><p>display and add functionality to a custom menu</p>
+</li>
+</ul>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="01">
+            <h1>Project Setup- &quot;CoffeeMate.1.0&quot;</h1>
+<p>In Android Studio, select File-&gt;New-&gt;New Project, or if it&#39;s a first run, select &quot;Start a new Android Studio Project&quot;</p>
+<p><img src="img/firstrun.png" alt="Figure 1: Start a new Android Studio project"></p>
+<p>Press &quot;Next&quot; (or click the option) and then give the project a name: &#39;CoffeeMate.1.0&#39;</p>
+<p>It&#39;s recommended you change the default package name also and it&#39;s probably worth changing the Project Location too but you can take the default if you wish.</p>
+<p><img src="img/new01.png" alt="Figure 2: Change default project name to CoffeeMate.1.0, provide a company domain and project location"></p>
+<p>Select the Platform(s) you want your app to run on - we&#39;ll just stick with Phone &amp; Tablet and choose an appropriate SDK.</p>
+<p><img src="img/new02.png" alt="Figure 3: Set the form factors"></p>
+<p>You should choose an Empty Activity as your activity type on the next screen</p>
+<p><img src="img/new03.png" alt="Figure 4: Select Empty Acivity template"></p>
+<p>and name it as in the screenshot below</p>
+<p><img src="img/new04.png" alt="Figure 5: Change default settings to &#39;Home&#39;&#39; in Customize the Activity screen"></p>
+<p>After you press &quot;Finish&quot;, you should now have something similar to the following:</p>
+<p><img src="img/new05.png" alt="Figure 6: Project open in Layout View"></p>
+<p><img src="img/new06.png" alt="Figure 6a: Project open in Design View"></p>
+<p>Next, as an exercise, select File-&gt;Close Project, to close the project so we can import it again.</p>
+<p>If no other Projects are open you will be displayed with</p>
+<p><img src="img/new07.png" alt="Figure 7: Open Existing Project"></p>
+<p>So, you can either</p>
+<ol>
+<li>Select the project from the <strong>Recent Projects</strong> List (on the left) or, if the project you want isn&#39;t in the List</li>
+<li>Import the project, so, select &quot;Open an Existing Android Project&quot; and navigate to the Project folder where you android app is stored (like <b>&#39;CoffeeMate.1.0&#39;</b> below)</li>
+</ol>
+<p><img src="img/new08.png" alt="Figure 8: Select Project Folder to reopen"></p>
+<p>Once the project is open again, familiarise yourself with the project layout - the initial xml layout or &quot;screen&quot; is first displayed, this is one of the many resources you will be using and creating throughout this module. We will experiment later with modifying this layout, but first you should run the application.</p>
+<p>Select the Project (CoffeeMate.1.0) and then select the &#39;Play&#39; button.</p>
+<p>If you haven&#39;t done so already, you will be asked to select/create an AVD (Android Virtual Device), as follows:</p>
+<p><img src="img/avd01.png" alt="Figure 10: Select Hardware (Nexus 4 here)"></p>
+<p>and</p>
+<p><img src="img/avd02.png" alt="Figure 11: Select System Image"></p>
+<p>and</p>
+<p><img src="img/avd03.png" alt="Figure 12: Verify AVD Configuration"></p>
+<p>and</p>
+<p><img src="img/avd04.png" alt="Figure 13: List of AVDs currently available"></p>
+<p><b>The Virtual Device is very heavy on resources so you may need to choose settings below what is selected in the Screenshots.</b></p>
+<p>Otherwise, use the settings as above and your first Android App should launch, (Once you&#39;ve unlocked the device!):</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="02">
+            <h1>Starter Resources</h1>
+<p>To make things a bit easier, you can download some starter resources for this lab here - <a href="archives/drawable.zip">Resources</a>. It contains all of drawable (image) resources you&#39;ll need to complete this lab. So replace your existing drawable folder with this one once you&#39;ve extracted the archive somewhere on your hard disk.</p>
+<p>Once you have the drawable folder &#39;updated&#39; there&#39;s a few other resources to update, so first of all, replace your <b>colors.xml</b> with the following:</p>
+<pre><code class="lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;resources&gt;
+    &lt;color name=&quot;colorPrimary&quot;&gt;#4893e4&lt;/color&gt;
+    &lt;color name=&quot;colorPrimaryDark&quot;&gt;#346daf&lt;/color&gt;
+    &lt;color name=&quot;colorAccent&quot;&gt;#2460a6&lt;/color&gt;
+    &lt;color name=&quot;colorFontWhite&quot;&gt;#ffffff&lt;/color&gt;
+    &lt;color name=&quot;colorFontOffWhite&quot;&gt;#f7f7f7&lt;/color&gt;
+    &lt;color name=&quot;colorFontBlack&quot;&gt;#000000&lt;/color&gt;
+&lt;/resources&gt;</code></pre>
+<p>Replace your <b>strings.xml</b> with</p>
+<pre><code class="lang-xml">&lt;resources&gt;
+    &lt;string name=&quot;app_name&quot;&gt;CoffeeMate.1.0&lt;/string&gt;
+    &lt;string name=&quot;appHelp&quot;&gt;This is the help screen for CoffeeMate&lt;/string&gt;
+    &lt;string name=&quot;appHelpExtra&quot;&gt;Basically\, if you need help on using this app, you probably shouldn\&#39;t be using it&lt;/string&gt;
+    &lt;string name=&quot;appDisplayName&quot;&gt;CoffeeMate 1.0&lt;/string&gt;
+    &lt;string name=&quot;appDesc&quot;&gt;CoffeeMate provides the user with a quick and easy way to manage a list of coffees and your favourite coffees.&lt;/string&gt;
+    &lt;string name=&quot;appMoreInfo&quot;&gt;For more information about CoffeeMate or to provide feedback please visit our website.&lt;/string&gt;
+    &lt;string name=&quot;appAbout&quot;&gt;About CoffeeMate&lt;/string&gt;
+    &lt;string name=&quot;appWebsite&quot;&gt;ddrohan.github.io&lt;/string&gt;
+    &lt;string name=&quot;developer&quot;&gt;Developed by Davey Drohan&lt;/string&gt;
+
+    &lt;string name=&quot;searchCoffeesLbl&quot;&gt;Search Coffee\&#39;s&lt;/string&gt;
+    &lt;string name=&quot;favouritesCoffeeLbl&quot;&gt;Favourite Coffee\&#39;s&lt;/string&gt;
+    &lt;string name=&quot;addACoffeeLbl&quot;&gt;Coffee Check In&lt;/string&gt;
+    &lt;string name=&quot;addCoffeeBtnLbl&quot;&gt;Add Coffee&lt;/string&gt;
+    &lt;string name=&quot;saveCoffeeBtn&quot;&gt;Save Coffee&lt;/string&gt;
+    &lt;string name=&quot;recentlyViewedLbl&quot;&gt;Recently Added Coffee\&#39;s&lt;/string&gt;
+    &lt;string name=&quot;coffeeNameLbl&quot;&gt;Name :&lt;/string&gt;
+    &lt;string name=&quot;coffeeShopLbl&quot;&gt;Shop :&lt;/string&gt;
+    &lt;string name=&quot;coffeePriceLbl&quot;&gt;Price :&lt;/string&gt;
+    &lt;string name=&quot;coffeeRatingLbl&quot;&gt;Star Rating&lt;/string&gt;
+    &lt;string name=&quot;coffeeDetailsLbl&quot;&gt;Full Coffee Details&lt;/string&gt;
+    &lt;string name=&quot;informationLbl&quot;&gt;Information&lt;/string&gt;
+    &lt;string name=&quot;emptyMessageLbl&quot;&gt;You have no Coffee\&#39;s added, go have a coffee!&lt;/string&gt;
+&lt;/resources&gt;</code></pre>
+<p>Replace your <b>menu_home.xml</b> with</p>
+<pre><code class="lang-xml">&lt;menu xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    tools:context=&quot;ie.cm.home&quot;&gt;
+
+    &lt;item android:id=&quot;@+id/action_settings&quot;
+        android:title=&quot;Settings&quot;
+        android:orderInCategory=&quot;100&quot;
+        app:showAsAction=&quot;never&quot; /&gt;
+
+    &lt;item android:id=&quot;@+id/menu_info&quot;
+        android:title=&quot;Info&quot;
+        android:orderInCategory=&quot;100&quot;
+        app:showAsAction=&quot;never&quot; /&gt;
+
+    &lt;item android:id=&quot;@+id/menu_home&quot;
+        android:icon=&quot;@drawable/home&quot;
+        android:title=&quot;Home&quot;
+        android:orderInCategory=&quot;100&quot;
+        app:showAsAction=&quot;ifRoom&quot; /&gt;
+&lt;/menu&gt;</code></pre>
+<p>and finally, your <b>content_home.xml</b> with</p>
+<pre><code class="lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;android.support.constraint.ConstraintLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    app:layout_behavior=&quot;@string/appbar_scrolling_view_behavior&quot;
+    tools:context=&quot;.Home&quot;
+    tools:showIn=&quot;@layout/home&quot;&gt;
+
+    &lt;Button
+        android:id=&quot;@+id/searchBtn&quot;
+        android:layout_width=&quot;93dp&quot;
+        android:layout_height=&quot;119dp&quot;
+        android:background=&quot;@color/colorFontOffWhite&quot;
+        android:drawableTop=&quot;@drawable/search_72&quot;
+        android:text=&quot;@string/searchCoffeesLbl&quot;
+        app:layout_constraintBottom_toBottomOf=&quot;parent&quot;
+        app:layout_constraintEnd_toEndOf=&quot;parent&quot;
+        app:layout_constraintStart_toStartOf=&quot;parent&quot;
+        app:layout_constraintTop_toTopOf=&quot;parent&quot;
+        app:layout_constraintVertical_bias=&quot;0.033&quot; /&gt;
+
+    &lt;Button
+        android:id=&quot;@+id/addBtn&quot;
+        android:layout_width=&quot;93dp&quot;
+        android:layout_height=&quot;119dp&quot;
+        android:background=&quot;@color/colorFontOffWhite&quot;
+        android:drawableTop=&quot;@drawable/add_72&quot;
+        android:text=&quot;@string/addACoffeeLbl&quot;
+        app:layout_constraintBottom_toBottomOf=&quot;parent&quot;
+        app:layout_constraintEnd_toEndOf=&quot;parent&quot;
+        app:layout_constraintHorizontal_bias=&quot;0.094&quot;
+        app:layout_constraintStart_toStartOf=&quot;parent&quot;
+        app:layout_constraintTop_toTopOf=&quot;parent&quot;
+        app:layout_constraintVertical_bias=&quot;0.033&quot; /&gt;
+
+    &lt;Button
+        android:id=&quot;@+id/favouritesBtn&quot;
+        android:layout_width=&quot;93dp&quot;
+        android:layout_height=&quot;119dp&quot;
+        android:background=&quot;@color/colorFontOffWhite&quot;
+        android:drawableTop=&quot;@drawable/favourites_72&quot;
+        android:text=&quot;@string/favouritesCoffeeLbl&quot;
+        app:layout_constraintBottom_toBottomOf=&quot;parent&quot;
+        app:layout_constraintEnd_toEndOf=&quot;parent&quot;
+        app:layout_constraintHorizontal_bias=&quot;0.915&quot;
+        app:layout_constraintStart_toStartOf=&quot;parent&quot;
+        app:layout_constraintTop_toTopOf=&quot;parent&quot;
+        app:layout_constraintVertical_bias=&quot;0.033&quot; /&gt;
+
+    &lt;ListView
+        android:id=&quot;@+id/recentlyAddedList&quot;
+        android:layout_width=&quot;411dp&quot;
+        android:layout_height=&quot;375dp&quot;
+        app:layout_constraintBottom_toBottomOf=&quot;parent&quot;
+        app:layout_constraintEnd_toEndOf=&quot;parent&quot;
+        app:layout_constraintHorizontal_bias=&quot;0.48&quot;
+        app:layout_constraintStart_toStartOf=&quot;parent&quot;
+        app:layout_constraintTop_toBottomOf=&quot;@+id/textView3&quot;
+        app:layout_constraintVertical_bias=&quot;0.135&quot; /&gt;
+
+    &lt;TextView
+        android:id=&quot;@+id/textView3&quot;
+        android:layout_width=&quot;0dp&quot;
+        android:layout_height=&quot;21dp&quot;
+        android:layout_marginBottom=&quot;408dp&quot;
+        android:background=&quot;@color/colorPrimary&quot;
+        android:text=&quot;@string/recentlyViewedLbl&quot;
+        android:textAlignment=&quot;center&quot;
+        android:textColor=&quot;@color/colorFontWhite&quot;
+        android:textSize=&quot;16dp&quot;
+        app:layout_constraintBottom_toBottomOf=&quot;parent&quot;
+        app:layout_constraintEnd_toEndOf=&quot;parent&quot;
+        app:layout_constraintHorizontal_bias=&quot;0.0&quot;
+        app:layout_constraintStart_toStartOf=&quot;parent&quot;
+        app:layout_constraintTop_toBottomOf=&quot;@+id/addBtn&quot;
+        app:layout_constraintVertical_bias=&quot;0.461&quot; /&gt;
+
+    &lt;TextView
+        android:id=&quot;@+id/footer&quot;
+        android:layout_width=&quot;0dp&quot;
+        android:layout_height=&quot;36dp&quot;
+        android:background=&quot;@color/colorPrimary&quot;
+        android:paddingTop=&quot;5dp&quot;
+        android:text=&quot;@string/appWebsite&quot;
+        android:textAlignment=&quot;center&quot;
+        android:textColor=&quot;@color/colorFontWhite&quot;
+        android:textSize=&quot;16sp&quot;
+        android:textStyle=&quot;bold&quot;
+        app:layout_constraintBottom_toBottomOf=&quot;parent&quot;
+        app:layout_constraintEnd_toEndOf=&quot;parent&quot;
+        app:layout_constraintHorizontal_bias=&quot;0.0&quot;
+        app:layout_constraintStart_toStartOf=&quot;parent&quot;
+        app:layout_constraintTop_toBottomOf=&quot;@+id/recentlyAddedList&quot;
+        app:layout_constraintVertical_bias=&quot;1.0&quot; /&gt;
+
+    &lt;TextView
+        android:id=&quot;@+id/emptyList&quot;
+        android:layout_width=&quot;266dp&quot;
+        android:layout_height=&quot;31dp&quot;
+        android:layout_gravity=&quot;center&quot;
+        android:text=&quot;@string/emptyMessageLbl&quot;
+        android:textSize=&quot;12sp&quot;
+        app:layout_constraintBottom_toBottomOf=&quot;parent&quot;
+        app:layout_constraintEnd_toEndOf=&quot;parent&quot;
+        app:layout_constraintHorizontal_bias=&quot;0.584&quot;
+        app:layout_constraintStart_toStartOf=&quot;parent&quot;
+        app:layout_constraintTop_toTopOf=&quot;parent&quot;
+        app:layout_constraintVertical_bias=&quot;0.662&quot; /&gt;
+
+&lt;/android.support.constraint.ConstraintLayout&gt;</code></pre>
+<p><b>NOTE : if you have a layout rendering error you&#39;ll need to add the following to your &#39;styles&#39;</b></p>
+<pre><code class="lang-xml"> &lt;item name=&quot;coordinatorLayoutStyle&quot;&gt;@style/Widget.Design.CoordinatorLayout&lt;/item&gt;</code></pre>
+<p>After Launching, The initial App will look like this</p>
+<p><img src="img/starterapphome.png" alt=""></p>
+<p>In this lab, you are required to do the following:</p>
+<ul>
+<li><p>Create a new Add Activity and &quot;Wire up&quot; the Coffee Check-In Button to our &#39;Add&#39; activity to display the Add screen.</p>
+</li>
+<li><p>Implement the &#39;Standard Menu&#39; so when a user selects the menu option on the device, they are presented with a list of options in a menu format.</p>
+</li>
+<li><p>Implement the &#39;Help&#39; activity, so that when a user selects &#39;Help&#39; from the &#39;Standard Menu&#39;, the Help Screen is displayed</p>
+</li>
+<li><p>Complete the &#39;Add&#39; activity to allow a user to &#39;add&#39; a new coffee to the current list of coffees.</p>
+</li>
+</ul>
+<p>The following steps will guide you through these requirements, so we&#39;ll start with the &#39;ADD&#39; feature and getting our Coffee Check-In Button working.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="03">
+            <h1>Switching to our &#39;Coffee Check In&#39; Screen</h1>
+<p>First of all, have a quick look at the resource layout (content_home.xml) we will be referring to, and familiarise yourself with the properties of the different buttons as you will have to refer to these in the following steps.</p>
+<p>Th first thing we need to do is create a new &#39;Add&#39; Activity, so using Android Studio, go to File-&gt;New-&gt;Activity and create a new <b>Empty Activity</b> in the <b><i>ie.cm</i></b> package with the following details</p>
+<p><img src="img/lab101.png" alt=""></p>
+<p>Next, replace the add layout with</p>
+<pre><code class="lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;android.support.constraint.ConstraintLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    tools:context=&quot;.Add&quot;&gt;
+
+    &lt;TextView
+        android:id=&quot;@+id/addfooter&quot;
+        android:layout_width=&quot;0dp&quot;
+        android:layout_height=&quot;36dp&quot;
+        android:background=&quot;@color/colorPrimary&quot;
+        android:paddingTop=&quot;5dp&quot;
+        android:text=&quot;@string/appWebsite&quot;
+        android:textAlignment=&quot;center&quot;
+        android:textColor=&quot;@color/colorFontWhite&quot;
+        android:textSize=&quot;16sp&quot;
+        android:textStyle=&quot;bold&quot;
+        app:layout_constraintBottom_toBottomOf=&quot;parent&quot;
+        app:layout_constraintEnd_toEndOf=&quot;parent&quot;
+        app:layout_constraintHorizontal_bias=&quot;0.523&quot;
+        app:layout_constraintStart_toStartOf=&quot;parent&quot;
+        app:layout_constraintTop_toTopOf=&quot;parent&quot;
+        app:layout_constraintVertical_bias=&quot;1.0&quot; /&gt;
+
+    &lt;TextView
+        android:id=&quot;@+id/addPriceTV&quot;
+        android:layout_width=&quot;99dp&quot;
+        android:layout_height=&quot;43dp&quot;
+        android:paddingTop=&quot;10dp&quot;
+        android:text=&quot;@string/coffeePriceLbl&quot;
+        android:textAlignment=&quot;textEnd&quot;
+        android:textColor=&quot;@color/colorFontBlack&quot;
+        android:textSize=&quot;18sp&quot;
+        app:layout_constraintBottom_toTopOf=&quot;@+id/addfooter&quot;
+        app:layout_constraintEnd_toEndOf=&quot;parent&quot;
+        app:layout_constraintHorizontal_bias=&quot;0.056&quot;
+        app:layout_constraintStart_toStartOf=&quot;parent&quot;
+        app:layout_constraintTop_toTopOf=&quot;parent&quot;
+        app:layout_constraintVertical_bias=&quot;0.324&quot; /&gt;
+
+    &lt;TextView
+        android:id=&quot;@+id/addShopTV&quot;
+        android:layout_width=&quot;99dp&quot;
+        android:layout_height=&quot;43dp&quot;
+        android:paddingTop=&quot;10dp&quot;
+        android:text=&quot;@string/coffeeShopLbl&quot;
+        android:textAlignment=&quot;textEnd&quot;
+        android:textColor=&quot;@color/colorFontBlack&quot;
+        android:textSize=&quot;18sp&quot;
+        app:layout_constraintBottom_toTopOf=&quot;@+id/addfooter&quot;
+        app:layout_constraintEnd_toEndOf=&quot;parent&quot;
+        app:layout_constraintHorizontal_bias=&quot;0.056&quot;
+        app:layout_constraintStart_toStartOf=&quot;parent&quot;
+        app:layout_constraintTop_toTopOf=&quot;parent&quot;
+        app:layout_constraintVertical_bias=&quot;0.179&quot; /&gt;
+
+    &lt;TextView
+        android:id=&quot;@+id/addNameTV&quot;
+        android:layout_width=&quot;99dp&quot;
+        android:layout_height=&quot;43dp&quot;
+        android:paddingTop=&quot;10dp&quot;
+        android:text=&quot;@string/coffeeNameLbl&quot;
+        android:textAlignment=&quot;textEnd&quot;
+        android:textColor=&quot;@color/colorFontBlack&quot;
+        android:textSize=&quot;18sp&quot;
+        app:layout_constraintBottom_toTopOf=&quot;@+id/addfooter&quot;
+        app:layout_constraintEnd_toEndOf=&quot;parent&quot;
+        app:layout_constraintHorizontal_bias=&quot;0.056&quot;
+        app:layout_constraintStart_toStartOf=&quot;parent&quot;
+        app:layout_constraintTop_toTopOf=&quot;parent&quot;
+        app:layout_constraintVertical_bias=&quot;0.036&quot; /&gt;
+
+    &lt;EditText
+        android:id=&quot;@+id/addNameET&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:layout_marginBottom=&quot;8dp&quot;
+        android:layout_marginEnd=&quot;8dp&quot;
+        android:layout_marginStart=&quot;8dp&quot;
+        android:layout_marginTop=&quot;8dp&quot;
+        android:ems=&quot;10&quot;
+        android:hint=&quot;Enter Coffee Name&quot;
+        android:inputType=&quot;textPersonName&quot;
+        app:layout_constraintBottom_toBottomOf=&quot;parent&quot;
+        app:layout_constraintEnd_toEndOf=&quot;parent&quot;
+        app:layout_constraintHorizontal_bias=&quot;0.447&quot;
+        app:layout_constraintStart_toEndOf=&quot;@+id/addNameTV&quot;
+        app:layout_constraintTop_toTopOf=&quot;parent&quot;
+        app:layout_constraintVertical_bias=&quot;0.017&quot; /&gt;
+
+    &lt;EditText
+        android:id=&quot;@+id/addPriceET&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:layout_marginBottom=&quot;8dp&quot;
+        android:layout_marginEnd=&quot;8dp&quot;
+        android:layout_marginStart=&quot;8dp&quot;
+        android:layout_marginTop=&quot;8dp&quot;
+        android:ems=&quot;10&quot;
+        android:hint=&quot;Enter Price&quot;
+        android:inputType=&quot;numberDecimal&quot;
+        app:layout_constraintBottom_toBottomOf=&quot;parent&quot;
+        app:layout_constraintEnd_toEndOf=&quot;parent&quot;
+        app:layout_constraintHorizontal_bias=&quot;0.447&quot;
+        app:layout_constraintStart_toEndOf=&quot;@+id/addPriceTV&quot;
+        app:layout_constraintTop_toTopOf=&quot;parent&quot;
+        app:layout_constraintVertical_bias=&quot;0.296&quot; /&gt;
+
+    &lt;EditText
+        android:id=&quot;@+id/addShopET&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:layout_marginStart=&quot;8dp&quot;
+        android:ems=&quot;10&quot;
+        android:hint=&quot;Enter Shop&quot;
+        android:inputType=&quot;textPersonName&quot;
+        app:layout_constraintBottom_toTopOf=&quot;@+id/addPriceET&quot;
+        app:layout_constraintEnd_toEndOf=&quot;parent&quot;
+        app:layout_constraintHorizontal_bias=&quot;0.37&quot;
+        app:layout_constraintStart_toEndOf=&quot;@+id/addShopTV&quot;
+        app:layout_constraintTop_toBottomOf=&quot;@+id/addNameET&quot;
+        app:layout_constraintVertical_bias=&quot;0.484&quot; /&gt;
+
+    &lt;RatingBar
+        android:id=&quot;@+id/addRatingBar&quot;
+        android:layout_width=&quot;242dp&quot;
+        android:layout_height=&quot;52dp&quot;
+        android:rating=&quot;1&quot;
+        android:stepSize=&quot;0.5&quot;
+        app:layout_constraintBottom_toTopOf=&quot;@+id/addfooter&quot;
+        app:layout_constraintEnd_toEndOf=&quot;parent&quot;
+        app:layout_constraintStart_toStartOf=&quot;parent&quot;
+        app:layout_constraintTop_toBottomOf=&quot;@+id/addPriceET&quot;
+        app:layout_constraintVertical_bias=&quot;0.213&quot; /&gt;
+
+    &lt;Button
+        android:id=&quot;@+id/addCoffeeBtn&quot;
+        android:layout_width=&quot;79dp&quot;
+        android:layout_height=&quot;84dp&quot;
+        android:background=&quot;@color/colorFontOffWhite&quot;
+        android:drawableTop=&quot;@drawable/blue_add_48&quot;
+        android:text=&quot;@string/addCoffeeBtnLbl&quot;
+        app:layout_constraintBottom_toTopOf=&quot;@+id/addfooter&quot;
+        app:layout_constraintEnd_toEndOf=&quot;parent&quot;
+        app:layout_constraintStart_toStartOf=&quot;parent&quot;
+        app:layout_constraintTop_toBottomOf=&quot;@+id/addRatingBar&quot;
+        app:layout_constraintVertical_bias=&quot;0.714&quot; /&gt;
+
+&lt;/android.support.constraint.ConstraintLayout&gt;</code></pre>
+<p>We <b>won&#39;t</b> need to implement specific Event Listeners for this step, instead we will use the simpler &#39;direct binding&#39; approach where we associate a method to be triggered when our buttons are pressed or <i><b>clicked</b></i>.</p>
+<p>So, navigate to the <b>onClick</b> property of the &#39;Coffee Check In&#39; button on your &#39;Home&#39; Screen (as below) and enter <b>add</b> for the method name.</p>
+<p><img src="img/lab102.png" alt=""></p>
+<p>Next, open your <b>Home.java</b> activity and add the following method</p>
+<pre><code class="lang-java">    public void add(View v)
+    {
+    startActivity(new Intent(this,Add.class));
+    }</code></pre>
+<p>You&#39;ll be prompted to &#39;add&#39; the <b>Intent</b> class so go ahead and use the shortcut to do that.</p>
+<p>You should run your app at this stage just to see if it behaves like it should and when you click &#39;Coffee Check In&#39; you should get</p>
+<p><img src="img/starterappadd.png" alt=""></p>
+<p>Now we&#39;ll start with implementing the menu.</p>
+<p>Because we&#39;ll be using the same menu for all our screens we&#39;re going to centralise the functionality by storing it in a &#39;Base&#39; class.</p>
+<p>But first, we need to reorganise our package structure, so create a new package called</p>
+<pre><code class="lang-java">ie.cm.activities</code></pre>
+<p>and &#39;move&#39; (drag-n-drop) your existing Home and Add Activities into this package.</p>
+<p>Now go ahead and create a new java class, called <b>Base</b> in the &#39;activities&#39; package</p>
+<p><img src="img/newbase.png" alt=""></p>
+<p>and replace it with the following</p>
+<pre><code class="lang-java">package ie.cm.activities;
+
+import ie.cm.R;
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
+
+public class Base extends AppCompatActivity {
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_home, menu);
+        return true;
+    }
+
+    public void menuHome(MenuItem m) {
+        startActivity(new Intent(this, Home.class));
+    }
+}</code></pre>
+<p>Now, see if you can refactor both the Home and Add Activities to utilise this Base class?</p>
+<p>Note : A Menu Item has it&#39;s own <i>onClick</i> also, so you should be trying to leverage this with the &#39;menuHome&#39; method above.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="04">
+            <h1>Our Custom Menu</h1>
+<p>On completion of this step we&#39;ll have something like this:</p>
+<p><img src="img/starterappmenu.png" alt=""></p>
+<p>which we sort of already have, but we&#39;ll add functionality. So once again, have a quick look at the resource we will use to create our menu, and familiarise yourself with the &quot;id&#39;s&quot; of the different options, you will have to refer to these later on in your code.</p>
+<p>So open up your <b>menu_home.xml</b> and replace with the following</p>
+<pre><code class="lang-xml">&lt;menu xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    tools:context=&quot;ie.cm.activities.Home&quot;&gt;
+
+    &lt;item android:id=&quot;@+id/menu_help&quot;
+        android:title=&quot;Help&quot;
+        android:orderInCategory=&quot;100&quot;
+        android:onClick=&quot;menuHelp&quot;
+        app:showAsAction=&quot;never&quot; /&gt;
+
+    &lt;item android:id=&quot;@+id/menu_info&quot;
+        android:title=&quot;Info&quot;
+        android:orderInCategory=&quot;100&quot;
+        android:onClick=&quot;menuInfo&quot;
+        app:showAsAction=&quot;never&quot; /&gt;
+
+    &lt;item
+        android:id=&quot;@+id/menu_home&quot;
+        android:icon=&quot;@drawable/home&quot;
+        android:onClick=&quot;menuHome&quot;
+        android:orderInCategory=&quot;100&quot;
+        android:title=&quot;Home&quot;
+        app:showAsAction=&quot;ifRoom&quot; /&gt;
+&lt;/menu&gt;</code></pre>
+<p>Then, open up your <b>Base.java</b> and add the following methods</p>
+<pre><code class="lang-java">public void menuInfo(MenuItem m)
+  {
+      new AlertDialog.Builder(this)
+              .setTitle(getString(R.string.appAbout))
+              .setMessage(getString(R.string.appDesc)
+                      + &quot;\n\n&quot;
+                      + getString(R.string.appMoreInfo))
+              .setPositiveButton(&quot;OK&quot;, new DialogInterface.OnClickListener() {
+                  @Override
+                  public void onClick(DialogInterface dialog, int which) {
+                     // we could put some code here too
+                  }
+              })
+              .show();
+  }
+
+ public void menuHelp(MenuItem m)
+    {
+
+    }</code></pre>
+<p>Fix the import errors and your Base Class should now look something like this</p>
+<pre><code class="lang-java">public class Base extends AppCompatActivity {
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_home, menu);
+        return true;
+    }
+
+    public void menuHome(MenuItem m) {
+        startActivity(new Intent(this, Home.class));
+    }
+
+    public void menuInfo(MenuItem m)
+      {
+          new AlertDialog.Builder(this)
+                  .setTitle(getString(R.string.appAbout))
+                  .setMessage(getString(R.string.appDesc)
+                          + &quot;\n\n&quot;
+                          + getString(R.string.appMoreInfo))
+                  .setPositiveButton(&quot;OK&quot;, new DialogInterface.OnClickListener() {
+                      @Override
+                      public void onClick(DialogInterface dialog, int which) {
+                         // we could put some code here too
+                      }
+                  })
+                  .show();
+      }
+
+    public void menuHelp(MenuItem m)
+    {
+
+    }
+}</code></pre>
+<p>You&#39;ll notice we haven&#39;t implemented the <b>menuHelp</b> method - as we don&#39;t have our <b>Help</b> activity yet but you can still run your app and confirm that the other method still functions as expected.</p>
+<p>We really only have two activities at the moment (our &#39;Home&#39; &amp; Add Activities) the menu won&#39;t do much, but we&#39;ll add to this once we have our Help Screen completed - run your app again to test your menu and see if it displays the way it&#39;s supposed to. (something like below for the &#39;info&#39; option)</p>
+<p><img src="img/starterappinfo.png" alt=""></p>
+<p>Next we&#39;ll add in our new Help screen.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="05">
+            <h1>The Help Screen</h1>
+<p>To implement the Help feature of our App you need to :</p>
+<ul>
+<li>create a new Activity (<b>Help.java</b>) and associated layout.</li>
+<li>link this activity with our menu.</li>
+</ul>
+<p>So, using Android Studio, go to File-&gt;New-&gt;Activity and again create a new <b>Empty Activity</b> in the <b><i>ie.cm.activities</i></b> package.</p>
+<p><img src="img/newhelp.png" alt=""></p>
+<p>Next, extend your <b>Help.java</b> Activity from &quot;Base&quot; as the parent class. This will insure we have the same menu as the other activities.</p>
+<p>Mainly for practice, design your Help screen something like the following, but you can design it whatever way you want really, so take some time to customise this layout to your own liking.</p>
+<p><img src="img/starterapphelp.png" alt=""></p>
+<p>Once you&#39;re happy with your own Help Screen, go ahead and wire it up to your <b>menuHelp</b> method in your Base class, so when the user selects the &#39;Help&#39; option from the menu, they are taken to your help screen (very like what you did for the info dialog).</p>
+<p>Now we can move on to actually adding a Coffee to our App.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="06">
+            <h1>Adding a Coffee - Saving our data in &#39;Coffee Check In&#39;</h1>
+<p>Our Add screen looks as follows:</p>
+<p><img src="img/starterappadd.png" alt=""></p>
+<p>The first thing to do is add a click event to the &#39;Add&#39; Button on the layout, so do that now, as below</p>
+<p><img src="img/lab103.png" alt=""></p>
+<p>and add the corresponding method <b><i>addCoffee()</i></b> in Add.java.</p>
+<p>Specifically, the <b><i>addCoffee()</i></b> method needs to</p>
+<ul>
+<li><p>Grab all the values that the user has entered for the Coffee details, validate them &amp; create a Coffee object</p>
+</li>
+<li><p>Add the Coffee object to some kind of list</p>
+</li>
+<li><p>Launch the &quot;<b>Home</b>&quot; Activity to return to the home screen, to display the current list of Coffee objects (probably via a call to <b><i>goToActivity()</i></b>)</p>
+</li>
+</ul>
+<p>Without referring to the notes (too much!) try and get this working, but here&#39;s some code to get you started.</p>
+<p>First of all, we need a coffee &#39;Model&#39; and somewhere to store those coffees so create a new <b>Coffee</b> class in a new package</p>
+<pre><code class="lang-java">ie.cm.models</code></pre>
+<p>and replace it with this</p>
+<pre><code class="lang-java">public class Coffee implements Serializable
+{
+    public int coffeeId;
+    public String coffeeName;
+    public String shop;
+    public double rating;
+    public double price;
+    public boolean favourite;
+
+
+    public Coffee() {}
+
+    public Coffee(String name, String shop, double rating, double price, boolean fav)
+    {
+        this.coffeeName = name;
+        this.shop = shop;
+        this.rating = rating;
+        this.price = price;
+        this.favourite = fav;
+    }
+
+    @Override
+    public String toString() {
+        return coffeeName + &quot;, &quot; + shop + &quot;, &quot; + rating
+                + &quot;, &quot; + price + &quot;, fav =&quot; + favourite;
+    }
+}</code></pre>
+<p>Then, in the Base class, add our &#39;coffeelist&#39; declaration like so</p>
+<pre><code class="lang-java">public static ArrayList&lt;Coffee&gt; coffeeList = new ArrayList&lt;Coffee&gt;();</code></pre>
+<p>Now, back in your Add.java, have a go at completing the <b><i>add()</i></b> method, using something along the lines of the following extracts</p>
+<pre><code class="lang-java">coffeeName = name.getText().toString();
+coffeeShop = shop.getText().toString();
+    try {
+    coffeePrice = Double.parseDouble(price.getText().toString());
+    }
+    catch(NumberFormatException e){
+    coffeePrice = 0.0;
+    }
+ratingValue = ratingBar.getRating();</code></pre>
+<p>and this</p>
+<pre><code class="lang-java">Coffee c = new Coffee(coffeeName, coffeeShop, ratingValue, coffeePrice, false);
+coffeeList.add(c);</code></pre>
+<p><img src="img/lab209.png" alt="">  </p>
+<p><img src="img/lab210.png" alt=""></p>
+<p>Run the App once again to confirm the add feature is now implemented.</p>
+<p>However, if you&#39;re not seeing your list of coffees  you might need to take another look at your <b>Home</b> Activity and try and work out what&#39;s missing - but don&#39;t worry, we&#39;ll cover that in the next step.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="07">
+            <h1>Displaying list of Coffees</h1>
+<p>The obvious (hopefully) reason that the list of coffees is not displaying, is because we haven&#39;t refactored Home to access the list and display it in our ListView.</p>
+<p>So the first thing to do is open Home.java and add and &#39;Override&#39; method, so we can confirm our coffees are being added to the list, every time we go &#39;Home&#39;.</p>
+<p>You can do this in Android Studio like so</p>
+<p>First, Right Mouse Click anywhere inside the class and choose &#39;Generate&#39;</p>
+<p><img src="img/lab104.png" alt=""></p>
+<p>and &#39;Override Methods&#39;</p>
+<p><img src="img/lab105.png" alt=""></p>
+<p>and &#39;onResume()&#39;</p>
+<p><img src="img/lab106.png" alt=""></p>
+<p>Then add the following to your newly added onResume()</p>
+<pre><code class="lang-java">Log.v(&quot;coffeemate&quot;, &quot;Home : &quot; + coffeeList);</code></pre>
+<p>Run your app again, add a few coffees and keep track of the logcat and filter out just the &#39;coffeemate&#39; messages - you should be seeing something like this</p>
+<p><img src="img/logcat.png" alt=""></p>
+<p>The last thing we need to do is display them as a list on the Home Screen. There&#39;s a very useful class called <b>ArrayAdapter</b> that can help us to do this.</p>
+<p>We will cover ArrayAdapters in detail later on in the module, and create our own Custom Adapters, but for the moment, replace your &#39;Home&#39; Activity with the following</p>
+<pre><code class="lang-java">public class Home extends Base {
+
+    TextView emptyList;
+    ListView coffeeListView;
+    ArrayAdapter&lt;Coffee&gt; coffeeAdapter;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.home);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        emptyList = findViewById(R.id.emptyList);
+        coffeeListView = findViewById(R.id.recentlyAddedList);
+        coffeeListView.setEmptyView(emptyList);
+        coffeeAdapter = new ArrayAdapter&lt;&gt;(this, android.R.layout.simple_list_item_1,coffeeList);
+        coffeeListView.setAdapter(coffeeAdapter);
+
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, &quot;Information&quot;, Snackbar.LENGTH_LONG)
+                        .setAction(&quot;More Info...&quot;, new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+
+                            }
+                        }).show();
+            }
+        });
+    }
+
+    public void add(View v) {
+        startActivity(new Intent(this, Add.class));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.v(&quot;coffeemate&quot;,&quot;Home : &quot; + coffeeList);
+
+        if(!coffeeList.isEmpty())
+            coffeeAdapter.notifyDataSetChanged();
+    }
+}</code></pre>
+<p>Run and test the app again, and you should see your coffees displayed like so</p>
+<p><img src="img/starterappfinal.png" alt=""></p>
+<p>Well Done :)</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="Exercises">
+            <h1>Exercises</h1>
+<h2>Solution</h2>
+<p>This is a solution to the lab:</p>
+<ul>
+<li><a href="archives/CoffeeMate.1.0.Solution.zip">CoffeeMate.1.0.Solution.zip</a></li>
+</ul>
+<h2>Exercise</h2>
+<p>In this lab you have experimented with Activities and menus:</p>
+<ul>
+<li><p>Experiment with adding in an additional Activity and and extra menu option which switches to that Activity</p>
+</li>
+<li><p>Consider using some logos or icons not in the resources folder, but ones you have found yourself as the menu option?</p>
+</li>
+</ul>
+
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <script>
+    $(document).on('keydown', function(e) {
+  e = e || window.event;
+  var nextTab;
+  switch (e.which || e.keyCode) {
+    case 37: // left
+      nextTab = $('.tab-menu a[data-tab].active').prev('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').last();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+
+    case 39: // right
+      nextTab = $('.tab-menu a[data-tab].active').next('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').first();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+  }
+});
+
+    $(document).ready(function() {
+  $('img').addClass('ui image');
+
+  $('.ui.embed').embed();
+
+  const $images = $('.lab img');
+  jQuery.each($images, function(i) {
+    if ($images[i].alt.length > 0) {
+      const divImg = $(document.createElement('div')).addClass(
+        'ui basic segment',
+      );
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass(
+        'ui blue ribbon label',
+      );
+      divLabel.append($images[i].alt);
+      $(divLabel).insertBefore($images[i]);
+    }
+  });
+
+  $('.ui.menu .item').tab({
+    history: true,
+    historyType: 'hash',
+  });
+
+  $('.popup').popup();
+
+  $('.ui.sidebar')
+    .sidebar({ context: $('.pushable') })
+    .sidebar('setting', 'transition', 'slide out')
+    .sidebar('attach events', '#toc');
+});
+
+  </script>
+
+
+
+  <div class="ui bottom fixed borderless right menu">
+    <div class="ui right small menu">
+      <div class="ui tiny basic message segment">
+         Powered by <a href="https://github.com/edeleastar/tutors-ts">tutors-ts.</a> 
+      </div>
+    </div>
+  </div>
+
+  </body>
+
+</html>
