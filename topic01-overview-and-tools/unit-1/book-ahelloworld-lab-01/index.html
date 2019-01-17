@@ -103,8 +103,8 @@ html, body {
     </header>
     <div class="right tab-menu menu">
       
-        <a class="item" data-tab="Lab-HelloWorld">
-          Lab-HelloWorld
+        <a class="item" data-tab="HelloWorld">
+          HelloWorld
         </a>
       
         <a class="item" data-tab="01">
@@ -136,7 +136,7 @@ html, body {
         
           
             <a class="item"
-               href="http://ddrohan.github.io/wit-mad-msc-2019//topic01-overview-and-tools/unit-1/book-ahelloworld-lab-01/index.html">Lab-HelloWorld </a>
+               href="http://ddrohan.github.io/wit-mad-msc-2019//topic01-overview-and-tools/unit-1/book-ahelloworld-lab-01/index.html">HelloWorld </a>
           
         
       
@@ -152,7 +152,7 @@ html, body {
       <div class="ui basic segment">
         <br>
         
-          <div class="ui tab segment lab" data-tab="Lab-HelloWorld">
+          <div class="ui tab segment lab" data-tab="HelloWorld">
             <h1>Objectives</h1>
 <p>Here we discuss how to install and set up effective tools for Android application development. These include the Android Studio IDE  + an emulator. We&#39;ll also create a simple Android App (HelloWorld), and be able to manage it within the Android Studio environment.</p>
 
@@ -184,23 +184,21 @@ html, body {
           <div class="ui tab segment lab" data-tab="02">
             <h1>Your First Android Project - &quot;HelloWorld&quot;</h1>
 <p>In Android Studio, select File-&gt;New-&gt;New Project, or if it&#39;s a first run, select &quot;Start a new Android Studio Project&quot;</p>
-<p><img src="img/firstrun.png" alt="Figure 1: Start a new Android Studio project"></p>
-<p>Press &quot;Next&quot; (or click the option) and then give the project a name: &#39;HelloWorld&#39;</p>
-<p>It&#39;s recommended you change the default package name also and it&#39;s probably worth changing the Project Location too but you can take the default for the moment.</p>
-<p><img src="img/new01.png" alt="Figure 2: Change default project name to HelloWorld, provide a company domain and project location"></p>
-<p>Select the Platform(s) you want your app to run on - we&#39;ll just stick with Phone &amp; Tablet and choose an appropriate Minimum SDK.</p>
-<p><img src="img/new02.png" alt="Figure 3: Set the form factors"></p>
-<p>You should choose an Empty Activity as your activity type on the next screen</p>
-<p><img src="img/new03.png" alt="Figure 4: Select Empty Activity template"></p>
-<p>and name it as in the screenshot below (notice how the layout name changes automatically)</p>
-<p><img src="img/new04.png" alt="Figure 5: Change default settings to HelloWorldActivity in Customize the Activity screen"></p>
-<p>After you press &quot;Finish&quot;, you should now have something similar to the following:</p>
-<p><img src="img/new05.png" alt="Figure 6: Project open in Layout View"></p>
-<p>and</p>
-<p><img src="img/new05a.png" alt="Figure 6a: Project open in Layout View"></p>
+<p><img src="img/firstrun.png" alt="Figure 1: Start a new Android Studio project">
+Press &quot;Next&quot; (or click the option) and then select your Activity type, for this simple app, an <strong>Empty Activity</strong> will suffice</p>
+<p><img src="img/new01.png" alt="Figure 2: Choose Your Project">
+Select the Platform you want your app to run on - we&#39;ll just stick with Phone &amp; Tablet here</p>
+<p><img src="img/new02.png" alt="Figure 3: Configure Your Project">
+Change default project name to HelloWorld, accept the default package name (or provide a company domain) and project location and language. Select an appropriate Minimum SDK (API 28 in the screenshot)</p>
+<p>After you press &quot;Finish&quot;, you should now have something similar to the following:
+<img src="img/new03.png" alt="Figure 4: Project open in Code View">
+and
+<img src="img/new04.png" alt="Figure 5: Project open in Layout View">
+If you don&#39;t see both layouts you can switch to &#39;Design + Blueprint&#39; View
+<img src="img/new03a.png" alt="Figure 5a: Project open in Layout View"></p>
 <p>Next, as an exercise, select File-&gt;Close Project, to close the project so we can import it again.</p>
-<p>If no other Projects are open you will be displayed with</p>
-<p><img src="img/new06.png" alt="Figure 7: Open Existing Project"></p>
+<p>If no other Projects are open you will be displayed with
+<img src="img/reload.png" alt="Figure 6: Open Existing Project"></p>
 <p>So, you can either</p>
 <ol>
 <li>Select the project from the <strong>Recent Projects</strong> List (on the left) or, if the project you want isn&#39;t in the List</li>
@@ -209,7 +207,7 @@ html, body {
 <p><img src="img/new07.png" alt="Figure 8: Select Project Folder to reopen"></p>
 <p>Once the project is open again, familiarise yourself with the project layout - the initial xml layout or &quot;screen&quot; is first displayed, this is one of the many resources you will be using and creating throughout this module. We will experiment later with modifying this layout, but first you should run the application.</p>
 <p>Select the Project (HelloWorld) and then select the &#39;Play&#39; button as below</p>
-<p><img src="img/new08.png" alt="Figure 9: Select Play to Run app"></p>
+<p><img src="img/play.png" alt="Figure 9: Select Play to Run app"></p>
 <p>If you haven&#39;t done so already, you will be asked to select/create an AVD (Android Virtual Device), as follows:</p>
 <p><img src="img/avd01.png" alt="Figure 10: Select Hardware (Nexus 4 here)"></p>
 <p>and</p>
@@ -226,22 +224,21 @@ html, body {
           <div class="ui tab segment lab" data-tab="03">
             <h1>Our version of &quot;HelloWorld&quot;</h1>
 <p>In this Step, you will be required to develop and run your own version of the &quot;Hello World&quot; Android Project (as seen below).</p>
-<p><img src="img/lab01.png" alt="Figure 1: Completed App running in Emulator"></p>
+<p><img src="img/lab1.png" alt="Figure 1: Completed App running in Emulator"></p>
 <p>If you&#39;ve deleted your HelloWorld Project, launch Android Studio (if it&#39;s not already open) and create a new Android Project called <b>HelloWorld</b> similar to what you did in Step 02.</p>
 <p>If you haven&#39;t deleted the project, you can just continue on.</p>
-<p>Name your package &#39;ie.wit&#39; (like you did before). Choose a <b>Basic</b> Activity and rename as before. It&#39;s recommended you select at least <b>Android 8.0</b> as the launch target platform (but any target will suffice for this particular lab). It&#39;s also probably a good idea to run the App at this stage, so you can set up your Virtual Device (if you haven&#39;t done so already).</p>
+<p>Name your package &#39;ie.wit.helloworld&#39; (like you did before). Choose an <b>Empty</b> Activity and it&#39;s recommended you select at least <b>Android 8.0</b> as the launch target platform (but any target will suffice for this particular lab). It&#39;s also probably a good idea to run the App at this stage, so you can set up your Virtual Device (if you haven&#39;t done so already).</p>
 <p>Edit your &quot;strings.xml&quot; file (in your res folder) and add the following &quot;resources&quot; - be careful if you have created an app which contains a &#39;menu&#39; folder, this also includes associated resources, so don&#39;t overwrite those resources, just add our ones at the end.</p>
 <pre><code class="lang-xml">    &lt;string name=&quot;window_text&quot;&gt;Press the button below to receive a friendly greeting from Android.&lt;/string&gt;
     &lt;string name=&quot;button_label&quot;&gt;Show Greeting&lt;/string&gt;
     &lt;string name=&quot;greeting_text&quot;&gt;Hello from Android!&lt;/string&gt;</code></pre>
 <p>Your completed strings.xml (with menu resources) should look like this</p>
-<pre><code class="lang-xml">&lt;resources&gt;
-  &lt;string name=&quot;app_name&quot;&gt;HelloWorld&lt;/string&gt;
+<pre><code class="lang-xml"> &lt;string name=&quot;app_name&quot;&gt;HelloWorld&lt;/string&gt;
  &lt;string name=&quot;window_text&quot;&gt;Press the button below to receive a friendly greeting from Android.&lt;/string&gt;
  &lt;string name=&quot;button_label&quot;&gt;Show Greeting&lt;/string&gt;
  &lt;string name=&quot;greeting_text&quot;&gt;Hello from Android!&lt;/string&gt;</code></pre>
 <p>If you choose &quot;open editor&quot; you can see the graphical representation of the String resources you have set up (and edit them there if you need to).</p>
-<p>Now, edit your &quot;activity_hello_world.xml&quot; in your <u><i><strong>layout</strong></i></u> folder and replace your <b>TextView</b> with the following - make sure your in &#39;Text&#39; view and not &#39;Design&#39; view window (so you can see the xml).</p>
+<p>Now, edit your <strong>activity_main.xml</strong> in your <u><i><strong>layout</strong></i></u> folder and replace your <b>TextView</b> with the following - make sure your in &#39;Text&#39; view and not &#39;Design&#39; view window (so you can see the xml).</p>
 <pre><code class="lang-xml">&lt;TextView
         android:id=&quot;@+id/textView1&quot;
         android:layout_width=&quot;wrap_content&quot;
@@ -266,20 +263,19 @@ html, body {
         app:layout_constraintEnd_toEndOf=&quot;parent&quot;
         app:layout_constraintStart_toStartOf=&quot;parent&quot; /&gt;</code></pre>
 <p>This will give you the following layout (once you select &#39;Design View&#39; again):</p>
-<p><img src="img/lab03.png" alt="Figure 3: Updated Activity Layout with TextView and Button widgets"></p>
+<p><img src="img/new03a.png" alt="Figure 3: Updated Activity Layout with TextView and Button widgets"></p>
 <p>Note how the widgets are &#39;anchored&#39; to the layout border - this ensures that our button and textview display correctly on the layout at runtime.</p>
-<p><img src="img/anchored.png" alt="Figure 4: Anchored TextView and Button widgets"></p>
-<p>If you can only see a &#39;Design View&#39; layout, choose &#39;Design + Blueprint&#39; like so</p>
-<p><img src="img/lab03a.png" alt="Figure 4a: Anchored TextView and Button widgets"></p>
+<p><img src="img/anchor.png" alt="Figure 4: Anchored TextView and Button widgets"></p>
+<p>If you can only see a &#39;Design View&#39; layout, choose &#39;Design + Blueprint&#39; like before.</p>
 <p>Once again, it&#39;s worth running the app at this point to confirm everything is displayed the way we want it. If you click the button, your app will probably crash - we don&#39;t have our <b>showGreeting()</b> method implemented yet.</p>
 <p>So, the last thing we need to do is add in our event handling code so that a short message is displayed when the user presses the &#39;Show Greeting&#39; button.</p>
-<p>Firstly, open up the <strong>HelloWorld.java</strong> source file and add the following method <b>BEFORE</b> the last closing brace</p>
+<p>Firstly, open up the <strong>MainActivity.java</strong> source file and add the following method <b>BEFORE</b> the last closing brace</p>
 <pre><code class="lang-java">public void showGreeting(View v) {
         String greetingText = getString(R.string.greeting_text);
         Toast.makeText(this, greetingText, Toast.LENGTH_LONG).show();
     }</code></pre>
 <p>You&#39;ll get a few compiler errors due to missing imports, so try and fix those.</p>
-<p>Note that we have no need for some kind of Listener interface (ala swing development) - our event handling is taken care of via the <strong><em>onClick</em></strong> attribute in our xml layout, here&#39;s what your completed <strong>HelloWorld</strong> Activity class should look like.</p>
+<p>Note that we have no need for some kind of Listener interface (ala swing development) - our event handling is taken care of via the <strong><em>onClick</em></strong> attribute in our xml layout, here&#39;s what your completed <strong>MainActivity</strong> Activity class should look like.</p>
 <pre><code class="lang-java">package ie.wit.helloworld;
 
 import android.support.v7.app.AppCompatActivity;
@@ -287,12 +283,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-public class HelloWorld extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_hello_world);
+        setContentView(R.layout.activity_main);
     }
 
     public void showGreeting(View v) {
