@@ -428,110 +428,124 @@ html, body {
 <p><img src="img/coffeerow.png" alt=""></p>
 <p>and replace the default with this</p>
 <pre><code class="lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;android.support.constraint.ConstraintLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+&lt;android.support.constraint.ConstraintLayout
+    xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
     xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;
     xmlns:tools=&quot;http://schemas.android.com/tools&quot;
     android:layout_width=&quot;match_parent&quot;
-    android:layout_height=&quot;match_parent&quot;&gt;
+    android:layout_height=&quot;match_parent&quot;
 
     &lt;ImageView
         android:id=&quot;@+id/rowFavouriteImg&quot;
         android:layout_width=&quot;39dp&quot;
         android:layout_height=&quot;39dp&quot;
-        android:layout_alignParentLeft=&quot;true&quot;
-        android:layout_marginTop=&quot;16dp&quot;
+        android:layout_alignParentStart=&quot;true&quot;
+        android:layout_marginEnd=&quot;8dp&quot;
+        android:layout_marginStart=&quot;8dp&quot;
+        android:layout_marginTop=&quot;8dp&quot;
         android:contentDescription=&quot;fav&quot;
         android:gravity=&quot;center_vertical&quot;
         android:src=&quot;@drawable/favourites_72&quot;
-        app:layout_constraintBottom_toTopOf=&quot;@+id/rowCoffeeShop&quot;
         app:layout_constraintEnd_toEndOf=&quot;parent&quot;
-        app:layout_constraintHorizontal_bias=&quot;0.046&quot;
+        app:layout_constraintHorizontal_bias=&quot;0.024&quot;
         app:layout_constraintStart_toStartOf=&quot;parent&quot;
-        app:layout_constraintTop_toTopOf=&quot;parent&quot;
-        app:layout_constraintVertical_bias=&quot;0.375&quot; /&gt;
+        app:layout_constraintTop_toTopOf=&quot;parent&quot; /&gt;
 
     &lt;ImageView
         android:id=&quot;@+id/rowDeleteImg&quot;
-        android:layout_width=&quot;39dp&quot;
-        android:layout_height=&quot;39dp&quot;
-        android:layout_alignParentRight=&quot;true&quot;
+        android:layout_width=&quot;45dp&quot;
+        android:layout_height=&quot;45dp&quot;
+        android:layout_alignParentEnd=&quot;true&quot;
         android:layout_alignParentTop=&quot;true&quot;
+        android:layout_marginEnd=&quot;8dp&quot;
+        android:layout_marginStart=&quot;8dp&quot;
+        android:layout_marginTop=&quot;8dp&quot;
         android:contentDescription=&quot;fav&quot;
         android:src=&quot;@android:drawable/ic_delete&quot;
-        app:layout_constraintBottom_toBottomOf=&quot;parent&quot;
         app:layout_constraintEnd_toEndOf=&quot;parent&quot;
-        app:layout_constraintHorizontal_bias=&quot;0.954&quot;
+        app:layout_constraintHorizontal_bias=&quot;1.0&quot;
         app:layout_constraintStart_toStartOf=&quot;parent&quot;
-        app:layout_constraintTop_toTopOf=&quot;parent&quot;
-        app:layout_constraintVertical_bias=&quot;0.014&quot; /&gt;
+        app:layout_constraintTop_toTopOf=&quot;parent&quot; /&gt;
 
     &lt;TextView
         android:id=&quot;@+id/rowCoffeeName&quot;
-        android:layout_width=&quot;wrap_content&quot;
-        android:layout_height=&quot;wrap_content&quot;
+        android:layout_width=&quot;130dp&quot;
+        android:layout_height=&quot;20dp&quot;
         android:layout_alignTop=&quot;@+id/rowFavouriteImg&quot;
-        android:layout_toRightOf=&quot;@+id/rowFavouriteImg&quot;
+        android:layout_marginEnd=&quot;8dp&quot;
+        android:layout_marginStart=&quot;8dp&quot;
+        android:layout_marginTop=&quot;8dp&quot;
+        android:layout_toEndOf=&quot;@+id/rowFavouriteImg&quot;
         android:gravity=&quot;center_vertical&quot;
         android:text=&quot;Coffee Name&quot;
+        android:textAlignment=&quot;viewStart&quot;
         android:textColor=&quot;@color/colorPrimary&quot;
         android:textSize=&quot;14sp&quot;
         android:textStyle=&quot;bold&quot;
-        app:layout_constraintBottom_toTopOf=&quot;@+id/rowRating&quot;
         app:layout_constraintEnd_toEndOf=&quot;parent&quot;
-        app:layout_constraintHorizontal_bias=&quot;0.25&quot;
+        app:layout_constraintHorizontal_bias=&quot;0.277&quot;
         app:layout_constraintStart_toStartOf=&quot;parent&quot;
-        app:layout_constraintTop_toTopOf=&quot;parent&quot;
-        app:layout_constraintVertical_bias=&quot;1.0&quot; /&gt;
+        app:layout_constraintTop_toTopOf=&quot;parent&quot; /&gt;
 
     &lt;TextView
         android:id=&quot;@+id/rowCoffeeShop&quot;
-        android:layout_width=&quot;wrap_content&quot;
-        android:layout_height=&quot;wrap_content&quot;
+        android:layout_width=&quot;130dp&quot;
+        android:layout_height=&quot;16dp&quot;
         android:layout_alignBottom=&quot;@+id/rowFavouriteImg&quot;
-        android:layout_alignLeft=&quot;@+id/rowCoffeeName&quot;
+        android:layout_alignStart=&quot;@+id/rowCoffeeName&quot;
+        android:layout_marginEnd=&quot;8dp&quot;
+        android:layout_marginStart=&quot;8dp&quot;
+        android:layout_marginTop=&quot;32dp&quot;
         android:gravity=&quot;center_vertical&quot;
         android:text=&quot;Coffee Shop&quot;
+        android:textAlignment=&quot;viewStart&quot;
         android:textColor=&quot;@color/colorFontBlack&quot;
-        android:textSize=&quot;11sp&quot;
+        android:textSize=&quot;12sp&quot;
         android:textStyle=&quot;bold&quot;
-        tools:layout_editor_absoluteX=&quot;75dp&quot;
-        tools:layout_editor_absoluteY=&quot;31dp&quot; /&gt;
+        app:layout_constraintEnd_toEndOf=&quot;parent&quot;
+        app:layout_constraintHorizontal_bias=&quot;0.277&quot;
+        app:layout_constraintStart_toStartOf=&quot;parent&quot;
+        app:layout_constraintTop_toTopOf=&quot;parent&quot; /&gt;
 
     &lt;TextView
         android:id=&quot;@+id/rowRating&quot;
         android:layout_width=&quot;wrap_content&quot;
         android:layout_height=&quot;wrap_content&quot;
         android:layout_alignBottom=&quot;@+id/rowDeleteImg&quot;
-        android:layout_marginBottom=&quot;8dp&quot;
         android:layout_marginEnd=&quot;8dp&quot;
         android:layout_marginStart=&quot;8dp&quot;
-        android:layout_marginTop=&quot;8dp&quot;
-        android:layout_toLeftOf=&quot;@+id/rowDeleteImg&quot;
+        android:layout_marginTop=&quot;32dp&quot;
+        android:layout_toStartOf=&quot;@+id/rowDeleteImg&quot;
         android:gravity=&quot;center_vertical&quot;
         android:text=&quot;5.0 *&quot;
+        android:textAlignment=&quot;viewStart&quot;
         android:textColor=&quot;@color/colorFontBlack&quot;
-        android:textSize=&quot;11sp&quot;
+        android:textSize=&quot;12sp&quot;
         android:textStyle=&quot;bold&quot;
-        app:layout_constraintBottom_toBottomOf=&quot;parent&quot;
         app:layout_constraintEnd_toEndOf=&quot;parent&quot;
         app:layout_constraintHorizontal_bias=&quot;0.79&quot;
         app:layout_constraintStart_toStartOf=&quot;parent&quot;
-        app:layout_constraintTop_toTopOf=&quot;parent&quot;
-        app:layout_constraintVertical_bias=&quot;0.047&quot; /&gt;
+        app:layout_constraintTop_toTopOf=&quot;parent&quot; /&gt;
 
     &lt;TextView
         android:id=&quot;@+id/rowPrice&quot;
         android:layout_width=&quot;wrap_content&quot;
         android:layout_height=&quot;wrap_content&quot;
-        android:layout_alignLeft=&quot;@+id/rowRating&quot;
+        android:layout_alignStart=&quot;@+id/rowRating&quot;
         android:layout_alignTop=&quot;@+id/rowDeleteImg&quot;
+        android:layout_marginEnd=&quot;8dp&quot;
+        android:layout_marginStart=&quot;8dp&quot;
+        android:layout_marginTop=&quot;8dp&quot;
         android:gravity=&quot;center_vertical&quot;
         android:text=&quot;€3.99&quot;
+        android:textAlignment=&quot;viewStart&quot;
         android:textColor=&quot;@color/colorPrimary&quot;
         android:textSize=&quot;14sp&quot;
         android:textStyle=&quot;bold&quot;
-        tools:layout_editor_absoluteX=&quot;280dp&quot;
-        tools:layout_editor_absoluteY=&quot;7dp&quot; /&gt;
+        app:layout_constraintEnd_toEndOf=&quot;parent&quot;
+        app:layout_constraintHorizontal_bias=&quot;0.819&quot;
+        app:layout_constraintStart_toStartOf=&quot;parent&quot;
+        app:layout_constraintTop_toTopOf=&quot;parent&quot; /&gt;
 &lt;/android.support.constraint.ConstraintLayout&gt;</code></pre>
 <p>and we need &#39;adapter&#39; code and &#39;fragment&#39; code to enhance our UI so go ahead and create 2 new packages</p>
 <pre><code class="lang-java">ie.cm.adapters
