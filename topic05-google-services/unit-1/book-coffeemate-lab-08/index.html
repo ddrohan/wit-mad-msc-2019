@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css"
+          type="text/css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css"
+          rel="stylesheet"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+      
+
+body {
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+  font-size:90%;
+  color: black;
+}
+
+p {
+  margin: 0.5em;
+}
+
+pre code {
+  font-family: "Monaco";
+  font-size: 100%;
+}
+
+img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin:10px;
+}
+
+h1, h2, h3 {
+  border-bottom:thin solid black;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+h1 {
+  font-style:italic;
+  font-size:130%;
+}
+
+h2 {
+  font-size:110%;
+}
+
+h3 {
+  font-size:100%;
+}
+
+
+
+      
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.footer {
+  background: white;
+  text-align: right;
+}
+.content {
+  flex: 1;
+  overflow: auto;
+}
+
+
+
+    </style>
+  </head>
+
+  
+  
+
+  <div class="ui fixed top pointing inverted stackable menu labmenu">
+    <header class="header item">
+      <i id="toc" class="sitemap icon"></i>
+      
+        <a href="../../index.html"> Google Services, Sign In, Location & Maps  </a>
+      
+    </header>
+    <div class="right tab-menu menu">
+      
+        <a class="item" data-tab="Lab-08">
+          Lab-08
+        </a>
+      
+        <a class="item" data-tab="01">
+          01
+        </a>
+      
+        <a class="item" data-tab="02">
+          02
+        </a>
+      
+        <a class="item" data-tab="03">
+          03
+        </a>
+      
+        <a class="item" data-tab="04">
+          04
+        </a>
+      
+        <a class="item" data-tab="05">
+          05
+        </a>
+      
+        <a class="item" data-tab="06">
+          06
+        </a>
+      
+        <a class="item" data-tab="07">
+          07
+        </a>
+      
+        <a class="item" data-tab="Solution">
+          Solution
+        </a>
+      
+        <a class="item" data-tab=".">
+          .
+        </a>
+      
+    </div>
+  </div>
+
+
+  
+
+  <div class="ui pushable">
+    <div class="ui inverted labeled icon left inline vertical sidebar menu">
+      <br><br>
+      
+        
+          
+            <a class="item"
+               href="http://ddrohan.github.io/wit-mad-msc-2019//topic01-overview-and-tools/unit-1/book-ahelloworld-lab-01/index.html">HelloWorld </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://ddrohan.github.io/wit-mad-msc-2019//topic01-overview-and-tools/unit-1/book-coffeemate-lab-01/index.html">Lab-01 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://ddrohan.github.io/wit-mad-msc-2019//topic02-ui-design/unit-1/book-coffeemate-lab-02/index.html">Lab-02 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://ddrohan.github.io/wit-mad-msc-2019//topic02-ui-design/unit-1/book-coffeemate-lab-03/index.html">Lab-03 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://ddrohan.github.io/wit-mad-msc-2019//topic02-ui-design/unit-2/book-coffeemate-lab-04/index.html">Lab-04 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://ddrohan.github.io/wit-mad-msc-2019//topic03-persistence/unit-1/book-coffeemate-lab-05-a/index.html">Lab-05-a </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://ddrohan.github.io/wit-mad-msc-2019//topic03-persistence/unit-1/book-coffeemate-lab-05-b/index.html">Lab-05-b </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://ddrohan.github.io/wit-mad-msc-2019//topic04-networking/unit-1/book-coffeemate-lab-06-a/index.html">Lab-06-a </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://ddrohan.github.io/wit-mad-msc-2019//topic04-networking/unit-1/book-coffeemate-lab-06-b/index.html">Lab-06-b </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://ddrohan.github.io/wit-mad-msc-2019//topic05-google-services/unit-1/book-coffeemate-lab-07/index.html">Lab-07 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://ddrohan.github.io/wit-mad-msc-2019//topic05-google-services/unit-1/book-coffeemate-lab-08/index.html">Lab-08 </a>
+          
+        
+      
+    </div>
+    <div class="pusher" tabindex="-1">
+      <div class="ui basic segment">
+        <br>
+        
+          <div class="ui tab segment lab" data-tab="Lab-08">
+            <h1>Objectives</h1>
+<p>This lab is the final lab in the current version and completes our Case Study <b>CoffeeMate</b> with the introduction of <strong>Location Awareness</strong> and <strong>Google Maps</strong> in version <b>CoffeeMate.8.0</b>.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="01">
+            <h1>Setup - Starter Code</h1>
+<p>Unlike previous labs, you don&#39;t need to download the starter code for this lab as it&#39;s basically a copy of <strong>CoffeeMate.7.0</strong>, so if you wish, you could just continue on with your own version. If you didn&#39;t get a chance to finish the previous lab you can download the CoffeeMate.7.0 solution here - <a href="archives/CoffeeMate.7.0.Solution.zip">CoffeeMate.7.0.Solution</a>.</p>
+<p>Either way, It&#39;s probably still a good idea to run the App and confirm that the app (our your app) is configured properly and (still) running.</p>
+<p>In this lab, you are required to do the following:</p>
+<ul>
+<li><p>Add Location awareness to the App (via a custom MapsFragment class)</p>
+</li>
+<li><p>Add a Google Map, so the user can see their coffees displayed on a Map</p>
+</li>
+<li><p>Add Volley Support to CoffeeMate to manage our coffees and their locations on the server (our APi already does most of this)</p>
+</li>
+</ul>
+<p>The following steps will guide you through these requirements, but before we can do anything with the Google Maps, you need to obtain your own Google Maps Key to add to your manifest file.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="02">
+            <h1>Obtaining your Google Maps Key</h1>
+<p>First of all, you need to <a href="https://developers.google.com/maps/documentation/android-api/signup">Get an API Key</a> on the Android Developer site as it contains all the info you need to obtain your Key. You&#39;ll have some of the work done already (from the previous lab) but there&#39;s still a bit of work to do, so if you get stuck just ask.</p>
+<p>Once you have your key, the next thing to do is add the following to your strings.xml</p>
+<pre><code class="lang-xml">&lt;string name=&quot;title_map&quot;&gt;Coffee Map&lt;/string&gt;
+&lt;string name=&quot;google_maps_key&quot;&gt;abcdefghijklmnopetcetcetc&lt;/string&gt;</code></pre>
+<p>where &#39;abcdefghijklmnopetcetcetc&#39; is your API Key.</p>
+<p>Next, open up your manifest file and add the following just before the <strong>closing</strong> &quot;application&quot; tag</p>
+<pre><code class="lang-xml">&lt;meta-data
+    android:name=&quot;com.google.android.geo.API_KEY&quot;
+    android:value=&quot;@string/google_maps_key&quot; /&gt;
+
+    &lt;uses-library android:name=&quot;org.apache.http.legacy&quot; android:required=&quot;false&quot;/&gt;</code></pre>
+<p>Also, in your manifest file add the following permissions</p>
+<pre><code class="lang-xml">&lt;uses-permission android:name=&quot;ie.cm.permission.MAPS_RECEIVE&quot;/&gt;
+&lt;uses-permission android:name=&quot;android.permission.ACCESS_FINE_LOCATION&quot;/&gt;</code></pre>
+<p>At the time of writing (December 2018) there were a few updates to dependency versions made (which this lab is based on) so can you confirm your <code>app/build.gradle</code> is very similar to the following</p>
+<pre><code class="lang-xml">apply plugin: &#39;com.android.application&#39;
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId &quot;ie.cm&quot;
+        minSdkVersion 28
+        targetSdkVersion 28
+        versionCode 1
+        versionName &quot;1.0&quot;
+        testInstrumentationRunner &quot;android.support.test.runner.AndroidJUnitRunner&quot;
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile(&#39;proguard-android.txt&#39;), &#39;proguard-rules.pro&#39;
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: &#39;libs&#39;, include: [&#39;*.jar&#39;])
+    implementation &#39;com.android.support:appcompat-v7:28.0.0&#39;
+    implementation &#39;com.android.support:support-v4:28.0.0&#39;
+    implementation &#39;com.android.support:design:28.0.0&#39;
+    implementation &#39;com.android.support.constraint:constraint-layout:1.1.3&#39;
+    testImplementation &#39;junit:junit:4.12&#39;
+    androidTestImplementation &#39;com.android.support.test:runner:1.0.2&#39;
+    androidTestImplementation &#39;com.android.support.test.espresso:espresso-core:3.0.2&#39;
+
+    implementation &#39;com.makeramen:roundedimageview:2.2.1&#39;
+    implementation &quot;com.android.support:recyclerview-v7:28.0.0&quot;
+    implementation &quot;com.android.support:cardview-v7:28.0.0&quot;
+    implementation &#39;com.android.volley:volley:1.1.1&#39;
+    implementation &#39;com.google.code.gson:gson:2.8.5&#39; // for Googles Gson JSON Parser
+
+    implementation &#39;com.google.android.gms:play-services-auth:15.0.1&#39;
+    implementation &#39;com.google.android.gms:play-services-maps:15.0.1&#39;
+    implementation &#39;com.google.android.gms:play-services-location:15.0.1&#39;
+
+    implementation &#39;com.shobhitpuri.custombuttons:google-signin:1.0.0&#39;
+}
+
+//apply plugin: &#39;com.google.gms.google-services&#39;</code></pre>
+<p>and you&#39;ve got</p>
+<pre><code class="lang-xml">classpath &#39;com.google.gms:google-services:3.2.0&#39;</code></pre>
+<p>in your <code>project/build.gradle</code>.</p>
+<p>Sync, and then go ahead and create a new <strong>Empty Activity</strong> and name the Layout <strong><em>activity_map</em></strong> - this isn&#39;t really that important as we will be disregarding the activity in the next step including the layout - we are just using it here to confirm we have configured our key etc. correctly.</p>
+<p><img src="img/mapactivity.png" alt=""></p>
+<p>now add the following to the layout</p>
+<pre><code class="lang-xml">&lt;fragment android:name=&quot;com.google.android.gms.maps.MapFragment&quot;
+        android:id=&quot;@+id/map&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;match_parent&quot;/&gt;</code></pre>
+<p>Finally, (for this step) add the following to your Home Activity, to temporarily handle launching our new Map activity, if the user selects the menu option.</p>
+<pre><code class="lang-java">else if (id == R.id.nav_map) {
+startActivity(new Intent(this, Map.class));
+}</code></pre>
+<p>Run your app and select &quot;View on Map&quot;</p>
+<p><img src="img/map1.png" alt=""></p>
+<p>and if everything goes according to plan, you should get</p>
+<p><img src="img/map2.png" alt=""></p>
+<p>Congratulations - you can now go ahead and build map based apps!</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="03">
+            <h1>View Users Current Location</h1>
+<p>At the moment, when the user selects the &#39;Map&#39; menu option, they get to see a standard map, but not their own location (or even their coffees locations), so this step (and the next) is about implementing that (we&#39;ll look at the coffees location in later steps).</p>
+<p>I used this link <a href="https://github.com/googlesamples/android-play-location/blob/master/LocationUpdates/app/src/main/java/com/google/android/gms/location/sample/locationupdates/MainActivity.java">here</a> for some of the functionality we needed using the latest features of the Api (Dec 2018)</p>
+<p>As we want to keep in line with the UI guidelines and approach, it makes sense to use a <i>Fragment</i> so first of all go ahead and create a new (Blank) Fragment called <strong>MapsFragment</strong> (<strong><em>NOT</em></strong> MapFragment) but <strong>DON&#39;T</strong> create a layout or include interface callbacks</p>
+<p><img src="img/lab0704.png" alt=""></p>
+<p>Make sure it extends from <strong><em>SupportMapFragment</em></strong> and implements the following interfaces, like so</p>
+<pre><code class="lang-java">public class MapsFragment extends SupportMapFragment implements
+        GoogleMap.OnInfoWindowClickListener,
+        GoogleMap.OnMapClickListener,
+        GoogleMap.OnMarkerClickListener,
+        OnMapReadyCallback {
+...
+}</code></pre>
+<p>Fix the errors and replace the existing <strong><em>newInstance()</em></strong> method with this one</p>
+<pre><code class="lang-java">public static MapsFragment newInstance() {
+    MapsFragment fragment = new MapsFragment();
+return fragment;
+}</code></pre>
+<p>Replace the existing instance variables with these</p>
+<pre><code class="lang-java">private LocationRequest             mLocationRequest;
+    private FusedLocationProviderClient mFusedLocationClient;
+    private LocationCallback            mLocationCallback;
+    private List&lt;Coffee&gt;                mCoffeeList;
+    private long                        UPDATE_INTERVAL = 5000; /* 5 secs */
+    private long                        FASTEST_INTERVAL = 1000; /* 1 sec */
+    private GoogleMap                   mMap;
+    private float                       zoom = 13f;
+
+    public CoffeeMateApp                app = CoffeeMateApp.getInstance();
+
+    private static final int            PERMISSION_REQUEST_CODE = 200;
+
+    private final int[]                 MAP_TYPES = {
+                                            GoogleMap.MAP_TYPE_SATELLITE,
+                                            GoogleMap.MAP_TYPE_NORMAL,
+                                            GoogleMap.MAP_TYPE_HYBRID,
+                                            GoogleMap.MAP_TYPE_TERRAIN,
+                                            GoogleMap.MAP_TYPE_NONE
+                                            };
+
+    private int                         curMapTypeIndex = 1;</code></pre>
+<p>Replace <strong><em>onCreate()</em></strong> with</p>
+<pre><code class="lang-java">@Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        try {
+            mFusedLocationClient = LocationServices.getFusedLocationProviderClient(getActivity());
+            createLocationCallback();
+            createLocationRequest();
+        }
+        catch(SecurityException se) {
+            Toast.makeText(getActivity(),&quot;Check Your Permissions&quot;,Toast.LENGTH_SHORT).show();
+        }
+    }</code></pre>
+<p>and add</p>
+<pre><code class="lang-java">private void createLocationRequest() {
+      mLocationRequest = new LocationRequest();
+      mLocationRequest.setInterval(UPDATE_INTERVAL);
+      mLocationRequest.setFastestInterval(FASTEST_INTERVAL);
+      mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+      //mLocationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
+  }
+
+   /* Creates a callback for receiving location events.*/
+  private void createLocationCallback() {
+      mLocationCallback = new LocationCallback() {
+          @Override
+          public void onLocationResult(LocationResult locationResult) {
+              super.onLocationResult(locationResult);
+
+              app.mCurrentLocation = locationResult.getLastLocation();
+              initCamera(app.mCurrentLocation);
+          }
+      };
+  }</code></pre>
+<p>Remove <strong><em>onCreateView()</em></strong> and replace with</p>
+<pre><code class="lang-java">@Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        setHasOptionsMenu(true);
+
+         getActivity().setTitle(R.string.title_map);
+    }</code></pre>
+<p>Add/implement the following methods</p>
+<pre><code class="lang-java">public void initListeners() {
+       mMap.setOnMarkerClickListener(this);
+       mMap.setOnInfoWindowClickListener(this);
+       mMap.setOnMapClickListener(this);
+   }
+
+   @Override
+   public void onResume() {
+       super.onResume();
+       getMapAsync(this);
+       if (checkPermission()) {
+           if (app.mCurrentLocation != null) {
+               Toast.makeText(getActivity(), &quot;GPS location was found!&quot;, Toast.LENGTH_SHORT).show();
+           } else {
+               Toast.makeText(getActivity(), &quot;Current location was null, Setting Default Values!&quot;, Toast.LENGTH_SHORT).show();
+               app.mCurrentLocation = new Location(&quot;Waterford City Default (WIT)&quot;);
+               app.mCurrentLocation.setLatitude(52.2462);
+               app.mCurrentLocation.setLongitude(-7.1202);
+           }
+           if(mMap != null) {
+               initCamera(app.mCurrentLocation);
+               mMap.setMyLocationEnabled(true);
+           }
+           startLocationUpdates();
+       }
+       else if (!checkPermission()) {
+           requestPermission();
+       }
+   }
+
+   private void initCamera(Location location) {
+       if (zoom != 13f &amp;&amp; zoom != mMap.getCameraPosition().zoom)
+           zoom = mMap.getCameraPosition().zoom;
+
+       CameraPosition position = CameraPosition.builder()
+               .target(new LatLng(location.getLatitude(),
+                       location.getLongitude()))
+               .zoom(zoom).bearing(0.0f)
+               .tilt(0.0f).build();
+
+       mMap.animateCamera(CameraUpdateFactory
+               .newCameraPosition(position), null);
+   }
+
+   public void startLocationUpdates() {
+       try {
+               mFusedLocationClient.requestLocationUpdates(mLocationRequest,
+                   mLocationCallback, Looper.myLooper());
+       }
+       catch(SecurityException se) {
+           Toast.makeText(getActivity(),&quot;Check Your Permissions on Location Updates&quot;,Toast.LENGTH_SHORT).show();
+       }
+   }</code></pre>
+<p>And replace the relevant methods with the following</p>
+<pre><code class="lang-java">@Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+        mMap.setMapType(MAP_TYPES[curMapTypeIndex]);
+
+        initListeners();
+        if(checkPermission()) {
+            mMap.setMyLocationEnabled(true);
+            initCamera(app.mCurrentLocation);
+        }
+        else if (!checkPermission()) {
+            requestPermission();
+        }
+            mMap.getUiSettings().setMapToolbarEnabled(true);
+            mMap.getUiSettings().setCompassEnabled(true);
+            mMap.getUiSettings().setMyLocationButtonEnabled(true);
+            mMap.getUiSettings().setAllGesturesEnabled(true);
+            mMap.setTrafficEnabled(true);
+            mMap.setBuildingsEnabled(true);
+            mMap.getUiSettings().setZoomControlsEnabled(true);
+    }
+
+    //http://www.journaldev.com/10409/android-handling-runtime-permissions-example
+      private boolean checkPermission() {
+          int result = ContextCompat.checkSelfPermission(getActivity(), ACCESS_FINE_LOCATION);
+
+          return result == PackageManager.PERMISSION_GRANTED;
+      }
+
+      private void requestPermission() {
+          ActivityCompat.requestPermissions(getActivity(), new String[]{ACCESS_FINE_LOCATION},
+                  PERMISSION_REQUEST_CODE);
+      }
+
+      @Override
+      public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+          switch (requestCode) {
+              case PERMISSION_REQUEST_CODE:
+                  if (grantResults.length &gt; 0) {
+
+                      boolean locationAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
+
+                      if (locationAccepted) {
+                          Snackbar.make(getView(), &quot;Permission Granted, Now you can access location data.&quot;,
+                                  Snackbar.LENGTH_LONG).show();
+                          if(checkPermission())
+                              mMap.setMyLocationEnabled(true);
+                          startLocationUpdates();
+                      }
+                      else {
+
+                          Snackbar.make(getView(), &quot;Permission Denied, You cannot access location data.&quot;,
+                                  Snackbar.LENGTH_LONG).show();
+
+                          if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.M) {
+                              if (shouldShowRequestPermissionRationale(ACCESS_FINE_LOCATION)) {
+                                  showMessageOKCancel(&quot;You need to allow access to both the permissions&quot;,
+                                          new DialogInterface.OnClickListener() {
+                                              @Override
+                                              public void onClick(DialogInterface dialog, int which) {
+                                                  if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.M) {
+                                                      requestPermissions(new String[]{ACCESS_FINE_LOCATION},
+                                                              PERMISSION_REQUEST_CODE);
+                                                  }
+                                              }
+                                          });
+                                  return;
+                              }
+                          }
+                      }
+                  }
+                  break;
+          }
+      }
+
+    private void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener) {
+        new AlertDialog.Builder(getActivity())
+                .setMessage(message)
+                .setPositiveButton(&quot;OK&quot;, okListener)
+                .setNegativeButton(&quot;Cancel&quot;, null)
+                .create()
+                .show();
+    }</code></pre>
+<p>Now, open your <strong>Home</strong> Activity and instead of loading the Map Activity (as is currently the case) implement the necessary code to display our <strong>MapsFragment</strong>.</p>
+<p>If you run the app now you will probably get a</p>
+<pre><code class="lang-xml">java.lang.NullPointerException: Appropriate Api was not requested.</code></pre>
+<p>error so you need to add</p>
+<pre><code class="lang-java">.addApi(LocationServices.API)</code></pre>
+<p>to your GoogleClient when you build it in your <strong>Login</strong> activity, so fix that now.</p>
+<p>If you&#39;ve followed all the steps correctly, and you run the app again you should be seeing something like this (make sure to accept the permissions)</p>
+<p><img src="img/map3.png" alt=""></p>
+<p>and then this</p>
+<p><img src="img/map4.png" alt=""></p>
+<p>Experiment with different coordinates and restarting your app and then use the emulator to send coordinates while the app is running (as below) as see what happens?</p>
+<p>The next few steps will be about building on the Location Awareness of our App and updating the Map automatically, as the user moves around and adding a &#39;Marker&#39; to show these movements.</p>
+<p>Before you move on, just confirm your app is now Location Aware, like so, when you &#39;View on Map&#39;</p>
+<p><img src="img/map4.png" alt=""></p>
+<p>but when you send new coordinates to the emulator, you should see the &#39;blue dot&#39; move to that new location, as below</p>
+<p><img src="img/lab0709.png" alt=""></p>
+<p><img src="img/lab0707.png" alt=""></p>
+<p><img src="img/map5.png" alt=""></p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="04">
+            <h1>View Users Coffee Locations</h1>
+<p>The last step in this lab involves displaying the users coffees on the map (with a marker which you can get <a href="archives/coffeeicon.png">here</a> and add to your &#39;drawable&#39; resources folder), along with the users location (which was the previous step) so we need to modify a few classes here, namely</p>
+<ul>
+<li>MapsFragment</li>
+<li>AddFragment</li>
+</ul>
+<p>but even before that we need to refactor our <code>Coffee</code> model so go ahead and add the following classes in your &#39;models&#39; package</p>
+<pre><code class="lang-java">public class Coords {
+    public double latitude;
+    public double longitude;
+}</code></pre>
+<p>and</p>
+<pre><code class="lang-java">public class Marker {
+    public int id = 1;
+    public Coords coords = new Coords();
+}</code></pre>
+<p>then replace your existing <code>Coffee</code> class with the following</p>
+<pre><code class="lang-java">public class Coffee
+{
+    public String _id;
+    public String name;
+    public String shop;
+    public double rating;
+    public double price;
+    public boolean favourite;
+    public String googlephoto;
+    public String usertoken;
+    public String address;
+    public Marker marker = new Marker();
+
+    public Coffee() {}
+
+    public Coffee(String name, String shop, double rating,
+                  double price, boolean fav, String photo, String token,
+                  String address, double lat, double lng)
+    {
+        //this._id = UUID.randomUUID().toString();
+        this.name = name;
+        this.shop = shop;
+        this.rating = rating;
+        this.price = price;
+        this.favourite = fav;
+        this.googlephoto = photo;
+        this.usertoken = token;
+        this.address = address;
+        this.marker.coords.latitude = lat;
+        this.marker.coords.longitude = lng;
+    }
+
+    @Override
+    public String toString() {
+        return &quot;Coffee [name=&quot; + name
+                + &quot;, shop =&quot; + shop + &quot;, rating=&quot; + rating + &quot;, price=&quot; + price
+                + &quot;, fav =&quot; + favourite + &quot; &quot;
+                + usertoken + &quot; &quot; + address + &quot; &quot; + marker.coords.latitude
+                + &quot; &quot; + marker.coords.longitude + &quot;]&quot;;
+    }
+}</code></pre>
+<p><strong>NOTE : It&#39;s very important that you delete any existing coffees you have on the server BEFORE you go ahead and add some dummy coffees (see below). Because our model has changed, specifically the &#39;marker&#39; property, the JSON returned from the server has changed, so our CoffeeApi GET call will crash if it tries to request different types of Coffees (ones with location data and ones without) at the same time</strong></p>
+<h3>MapsFragment</h3>
+<p>Here we need to inspect our list of coffees and (using the longitude and latitude coordinates) place a marker on the map indicating the location of each coffee.</p>
+<p>So, first, open up your MapsFragment class and add the following method</p>
+<pre><code class="lang-java">public void addCoffees(List&lt;Coffee&gt; list){
+    for(Coffee c : list)
+        mMap.addMarker(new MarkerOptions()
+            .position(new LatLng(c.marker.coords.latitude, c.marker.coords.longitude))
+            .title(c.name + &quot; €&quot; + c.price)
+            .snippet(c.shop + &quot; &quot; + c.address)                 
+            .icon(BitmapDescriptorFactory.fromResource(R.drawable.coffee)));
+}</code></pre>
+<p>To ensure our list of coffees is up to date and the most recent one, the MapsFragment class needs to implement the VolleyListener interface, so go ahead and complete that now.</p>
+<p>Once you&#39;ve implemented the necessary methods, add a call to <strong><em>addCoffees()</em></strong> in your <strong><em>setList()</em></strong> method.</p>
+<p>Now, add the following APi calls to your <strong><em>onResume()</em></strong> AFTER <strong><em>getMapAsync(this)</em></strong></p>
+<pre><code class="lang-java">CoffeeApi.attachListener(this);
+CoffeeApi.get(&quot;/coffees/&quot; + app.googleToken);</code></pre>
+<h3>AddFragment</h3>
+<p>After you&#39;ve made those changes, you&#39;ll get an error in your <code>AddFragment</code> so for the moment, just pass in dummy data for location and address, like so</p>
+<pre><code class="lang-java">Coffee c = new Coffee(coffeeName, coffeeShop, ratingValue,
+                    coffeePrice, false, app.googlePhotoURL, app.googleToken,&quot;&quot;,0,0);</code></pre>
+<p>Now, obviously, we don&#39;t have any coffees with location info saved on the server yet, so before we try and go adding a coffee via the app, I&#39;d suggest manually adding some dummy coffees using the following method - Make sure you comment it out after your first run, otherwise you&#39;ll have multiple coffees added to the same location :)</p>
+<pre><code class="lang-java">public void addCoffeeData(){
+        Coffee c1 = new Coffee(&quot;Standard Black FF&quot;, &quot;Tescos&quot;,2.5,1.99,true,
+                app.googlePhotoURL,app.googleToken,&quot;Address 1&quot;, 52.26, -7.12);
+        Coffee c2 = new Coffee(&quot;Standard Green FF&quot;, &quot;The Green Room&quot;,2.5,1.99,false,
+                app.googlePhotoURL,app.googleToken,&quot;Address 2&quot;,52.27, -7.13);
+        Coffee c3 = new Coffee(&quot;Regular Joe FF&quot;, &quot;Joe&#39;s Place&quot;,3.5,2.99,true,
+                app.googlePhotoURL,app.googleToken,&quot;Address 3&quot;,52.24,-7.10);
+        Coffee c4 = new Coffee(&quot;Espresso FF&quot;, &quot;Ardkeen Stores&quot;,4.5,1.49,false,
+                app.googlePhotoURL,app.googleToken,&quot;Address 4&quot;,52.25,-7.145);
+
+        CoffeeApi.post(&quot;/coffees/&quot; + app.googleToken,c1);
+        CoffeeApi.post(&quot;/coffees/&quot; + app.googleToken,c2);
+        CoffeeApi.post(&quot;/coffees/&quot; + app.googleToken,c3);
+        CoffeeApi.post(&quot;/coffees/&quot; + app.googleToken,c4);
+    }</code></pre>
+<p>so when you run your app, you know it&#39;s working correctly if you see your coffees, something like this - feel free to change the coordinates, or add in another coffee.</p>
+<p><img src="img/mapmarkers.png" alt=""></p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="05">
+            <h1>Adding a Coffee - Refactored for Location Data &amp; Maps</h1>
+<p>Now that we can see existing coffees on our Map, what about when we add new coffees on the device? This is the final step in our Case Study and involves a bit of work in refactoring our <code>AddFragment</code> as we need to grab the current location to save with our coffee details.</p>
+<p>And for fun :) we&#39;ll also embed our <code>MapsFragment</code> inside the <code>AddFragment</code> layout, so we can see where we&#39;re adding our coffee, like so</p>
+<p><img src="img/addmap.png" alt=""></p>
+<p>First thing that needs to be done is make our <code>AddFragment</code> <strong>Location Aware</strong> so go ahead and ensure your Fragment implements the correct callback interface (<strong><em>OnMapReadyCallback</em></strong>) and also implement our <strong><em>VolleyListener</em></strong> to get the latest version of the coffees to display on the map. See if you can implement the necessary code to display the map with all the users coffees - you can refer to the lecture material if necessary, but basically you&#39;ll need to <strong>GET</strong> your coffees once the Map is <strong>READY</strong> and then <strong>ADD</strong> your coffees in the VolleyListener callback. </p>
+<p>Now open up your <strong>fragment_add</strong> and add the following fragment element</p>
+<pre><code class="lang-xml">&lt;fragment
+        android:name=&quot;ie.cm.fragments.MapsFragment&quot;
+        android:id=&quot;@+id/addmap&quot;
+        android:layout_width=&quot;364dp&quot;
+        android:layout_height=&quot;162dp&quot;
+       /&gt;</code></pre>
+<p><strong>Note that the fragment name is our own Custom MapFragment and not the standard MapFragment</strong>. Your layout might be a bit all over the place as a result :) so I&#39;ve since converted the layout to a ConstraintLayout, which you can find below and can replace yours with, if you wish?</p>
+<p><img src="img/addmaplayout.png" alt=""></p>
+<pre><code class="lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;android.support.constraint.ConstraintLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    android:id=&quot;@+id/addLayout&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    tools:context=&quot;.fragments.AddFragment&quot;&gt;
+
+    &lt;TextView
+        android:id=&quot;@+id/addfooter&quot;
+        android:layout_width=&quot;0dp&quot;
+        android:layout_height=&quot;36dp&quot;
+        android:background=&quot;@color/colorPrimary&quot;
+        android:paddingTop=&quot;5dp&quot;
+        android:text=&quot;@string/appWebsite&quot;
+        android:textAlignment=&quot;center&quot;
+        android:textColor=&quot;@color/colorFontWhite&quot;
+        android:textSize=&quot;16sp&quot;
+        android:textStyle=&quot;bold&quot;
+        app:layout_constraintBottom_toBottomOf=&quot;parent&quot;
+        app:layout_constraintEnd_toEndOf=&quot;parent&quot;
+        app:layout_constraintHorizontal_bias=&quot;0.523&quot;
+        app:layout_constraintStart_toStartOf=&quot;parent&quot;
+        app:layout_constraintTop_toTopOf=&quot;parent&quot;
+        app:layout_constraintVertical_bias=&quot;1.0&quot; /&gt;
+
+    &lt;TextView
+        android:id=&quot;@+id/addPriceTV&quot;
+        android:layout_width=&quot;99dp&quot;
+        android:layout_height=&quot;43dp&quot;
+        android:layout_marginStart=&quot;36dp&quot;
+        android:layout_marginTop=&quot;8dp&quot;
+        android:layout_marginEnd=&quot;8dp&quot;
+        android:layout_marginBottom=&quot;8dp&quot;
+        android:paddingTop=&quot;10dp&quot;
+        android:text=&quot;@string/coffeePriceLbl&quot;
+        android:textAlignment=&quot;textEnd&quot;
+        android:textColor=&quot;@color/colorFontBlack&quot;
+        android:textSize=&quot;18sp&quot;
+        app:layout_constraintBottom_toBottomOf=&quot;parent&quot;
+        app:layout_constraintEnd_toStartOf=&quot;@+id/addPriceET&quot;
+        app:layout_constraintHorizontal_bias=&quot;0.0&quot;
+        app:layout_constraintStart_toStartOf=&quot;parent&quot;
+        app:layout_constraintTop_toTopOf=&quot;parent&quot;
+        app:layout_constraintVertical_bias=&quot;0.21&quot; /&gt;
+
+    &lt;TextView
+        android:id=&quot;@+id/addShopTV&quot;
+        android:layout_width=&quot;99dp&quot;
+        android:layout_height=&quot;43dp&quot;
+        android:layout_marginStart=&quot;36dp&quot;
+        android:layout_marginTop=&quot;8dp&quot;
+        android:layout_marginEnd=&quot;8dp&quot;
+        android:layout_marginBottom=&quot;8dp&quot;
+        android:paddingTop=&quot;10dp&quot;
+        android:text=&quot;@string/coffeeShopLbl&quot;
+        android:textAlignment=&quot;textEnd&quot;
+        android:textColor=&quot;@color/colorFontBlack&quot;
+        android:textSize=&quot;18sp&quot;
+        app:layout_constraintBottom_toBottomOf=&quot;parent&quot;
+        app:layout_constraintEnd_toStartOf=&quot;@+id/addShopET&quot;
+        app:layout_constraintHorizontal_bias=&quot;0.083&quot;
+        app:layout_constraintStart_toStartOf=&quot;parent&quot;
+        app:layout_constraintTop_toTopOf=&quot;parent&quot;
+        app:layout_constraintVertical_bias=&quot;0.115&quot; /&gt;
+
+    &lt;TextView
+        android:id=&quot;@+id/addNameTV&quot;
+        android:layout_width=&quot;99dp&quot;
+        android:layout_height=&quot;43dp&quot;
+        android:layout_marginStart=&quot;36dp&quot;
+        android:layout_marginEnd=&quot;8dp&quot;
+        android:paddingTop=&quot;10dp&quot;
+        android:text=&quot;@string/coffeeNameLbl&quot;
+        android:textAlignment=&quot;textEnd&quot;
+        android:textColor=&quot;@color/colorFontBlack&quot;
+        android:textSize=&quot;18sp&quot;
+        app:layout_constraintBottom_toTopOf=&quot;@+id/addShopTV&quot;
+        app:layout_constraintEnd_toStartOf=&quot;@+id/addNameET&quot;
+        app:layout_constraintHorizontal_bias=&quot;0.0&quot;
+        app:layout_constraintStart_toStartOf=&quot;parent&quot;
+        app:layout_constraintTop_toTopOf=&quot;parent&quot;
+        app:layout_constraintVertical_bias=&quot;0.882&quot; /&gt;
+
+    &lt;EditText
+        android:id=&quot;@+id/addNameET&quot;
+        android:layout_width=&quot;189dp&quot;
+        android:layout_height=&quot;44dp&quot;
+        android:layout_marginStart=&quot;8dp&quot;
+        android:layout_marginEnd=&quot;40dp&quot;
+        android:ems=&quot;10&quot;
+        android:hint=&quot;Enter Coffee Name&quot;
+        android:inputType=&quot;textPersonName&quot;
+        app:layout_constraintBottom_toBottomOf=&quot;parent&quot;
+        app:layout_constraintEnd_toEndOf=&quot;parent&quot;
+        app:layout_constraintHorizontal_bias=&quot;0.447&quot;
+        app:layout_constraintStart_toEndOf=&quot;@+id/addNameTV&quot;
+        app:layout_constraintTop_toTopOf=&quot;parent&quot;
+        app:layout_constraintVertical_bias=&quot;0.034&quot; /&gt;
+
+    &lt;EditText
+        android:id=&quot;@+id/addPriceET&quot;
+        android:layout_width=&quot;131dp&quot;
+        android:layout_height=&quot;42dp&quot;
+        android:layout_marginStart=&quot;8dp&quot;
+        android:layout_marginEnd=&quot;100dp&quot;
+        android:ems=&quot;10&quot;
+        android:hint=&quot;Enter Price&quot;
+        android:inputType=&quot;numberDecimal&quot;
+        app:layout_constraintBottom_toBottomOf=&quot;parent&quot;
+        app:layout_constraintEnd_toEndOf=&quot;parent&quot;
+        app:layout_constraintHorizontal_bias=&quot;0.447&quot;
+        app:layout_constraintStart_toEndOf=&quot;@+id/addPriceTV&quot;
+        app:layout_constraintTop_toTopOf=&quot;parent&quot;
+        app:layout_constraintVertical_bias=&quot;0.219&quot; /&gt;
+
+    &lt;EditText
+        android:id=&quot;@+id/addShopET&quot;
+        android:layout_width=&quot;189dp&quot;
+        android:layout_height=&quot;45dp&quot;
+        android:layout_marginStart=&quot;8dp&quot;
+        android:layout_marginEnd=&quot;40dp&quot;
+        android:ems=&quot;10&quot;
+        android:hint=&quot;Enter Shop&quot;
+        android:inputType=&quot;textPersonName&quot;
+        app:layout_constraintBottom_toBottomOf=&quot;parent&quot;
+        app:layout_constraintEnd_toEndOf=&quot;parent&quot;
+        app:layout_constraintHorizontal_bias=&quot;0.993&quot;
+        app:layout_constraintStart_toStartOf=&quot;parent&quot;
+        app:layout_constraintTop_toTopOf=&quot;parent&quot;
+        app:layout_constraintVertical_bias=&quot;0.124&quot; /&gt;
+
+    &lt;RatingBar
+        android:id=&quot;@+id/addRatingBar&quot;
+        android:layout_width=&quot;242dp&quot;
+        android:layout_height=&quot;52dp&quot;
+        android:layout_marginTop=&quot;20dp&quot;
+        android:rating=&quot;1&quot;
+        android:stepSize=&quot;0.5&quot;
+        app:layout_constraintBottom_toTopOf=&quot;@+id/editfooter&quot;
+        app:layout_constraintEnd_toEndOf=&quot;parent&quot;
+        app:layout_constraintStart_toStartOf=&quot;parent&quot;
+        app:layout_constraintTop_toBottomOf=&quot;@+id/addPriceET&quot;
+        app:layout_constraintVertical_bias=&quot;0.213&quot; /&gt;
+
+
+    &lt;fragment
+        android:id=&quot;@+id/addmap&quot;
+        android:name=&quot;ie.cm.fragments.MapsFragment&quot;
+        android:layout_width=&quot;364dp&quot;
+        android:layout_height=&quot;162dp&quot;
+        android:layout_marginStart=&quot;8dp&quot;
+        android:layout_marginTop=&quot;8dp&quot;
+        android:layout_marginEnd=&quot;8dp&quot;
+        android:layout_marginBottom=&quot;8dp&quot;
+        app:layout_constraintBottom_toBottomOf=&quot;@+id/addfooter&quot;
+        app:layout_constraintEnd_toEndOf=&quot;parent&quot;
+        app:layout_constraintStart_toStartOf=&quot;parent&quot;
+        app:layout_constraintTop_toTopOf=&quot;parent&quot;
+        app:layout_constraintVertical_bias=&quot;0.627&quot;
+        tools:layout=&quot;@layout/activity_map&quot; /&gt;
+
+    &lt;Button
+        android:id=&quot;@+id/addCoffeeBtn&quot;
+        android:layout_width=&quot;79dp&quot;
+        android:layout_height=&quot;84dp&quot;
+        android:layout_marginStart=&quot;8dp&quot;
+        android:layout_marginTop=&quot;8dp&quot;
+        android:layout_marginEnd=&quot;8dp&quot;
+        android:layout_marginBottom=&quot;8dp&quot;
+        android:background=&quot;@color/colorFontOffWhite&quot;
+        android:drawableTop=&quot;@drawable/blue_add_48&quot;
+        android:elevation=&quot;5dp&quot;
+        android:text=&quot;@string/addCoffeeBtnLbl&quot;
+        app:layout_constraintBottom_toBottomOf=&quot;@+id/addfooter&quot;
+        app:layout_constraintEnd_toEndOf=&quot;parent&quot;
+        app:layout_constraintHorizontal_bias=&quot;0.501&quot;
+        app:layout_constraintStart_toStartOf=&quot;parent&quot;
+        app:layout_constraintTop_toBottomOf=&quot;@+id/addmap&quot;
+        app:layout_constraintVertical_bias=&quot;0.125&quot; /&gt;
+
+&lt;/android.support.constraint.ConstraintLayout&gt;</code></pre>
+<p>If you run your app again and go to &#39;Add a Coffee&#39; you should see something like this</p>
+<p><img src="img/addmap.png" alt=""></p>
+<p>Take some time to experiment with send different coordinates to the emulator, while you are on the Add Coffee screen, and you should see the map move to that new location - another example of how useful fragments can be!</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="06">
+            <h1>Adding a Coffee - Updating the Map</h1>
+<p>Currently we can see the users coffees on a map even while we are on the &#39;Add a Coffee&#39; screen. Now let&#39;s look at updating that map with a newly added Coffee.</p>
+<p>First, open your add fragment and remove/comment out the intent to return &#39;Home&#39;, otherwise you&#39;ll never see the coffee marker being added.</p>
+<p>Now, update the coffee constructor fields to include the latitude and longitude values for the coffee being created and finally, try and implement the code necessary to update our map with the newly created coffee. This is actually a single line of code but refer to the lecture material if you&#39;re not sure.</p>
+<p>Run your app again, send some coordinates to change your current location, Add a coffee and you should get something like this</p>
+<p>For example, we&#39;re here</p>
+<p><img src="img/addmap1.png" alt=""></p>
+<p>and then change to here</p>
+<p><img src="img/addmap2.png" alt=""></p>
+<p>and then we add a coffee</p>
+<p><img src="img/addmap3.png" alt=""></p>
+<p>Don&#39;t forget to &#39;clear&#39; the Map before you add your coffees or else you&#39;ll get markers on top of markers. Also, it might be useful to reset the fields after a coffee has been added (as above), so go ahead and implement that using the following method (but it is optional)</p>
+<pre><code class="lang-java">private void resetFields() {
+        name.setText(&quot;&quot;);
+        shop.setText(&quot;&quot;);
+        price.setText(&quot;&quot;);
+        ratingBar.setRating(2);
+        name.requestFocus();
+        name.setFocusable(true);
+    }</code></pre>
+<p>If you click on one of the markers you&#39;ve added from the device you&#39;ll notice that the address field is blank. We need to convert our coordinates into a meaningful address for the user, so that&#39;s next.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="07">
+            <h1>Adding a Coffee - Reversing Geocoding</h1>
+<p>At this point when we add a new coffee, we can see it on the map instantly, but the address is empty if this is carried out on the device. To make sure the coffee address (as well as the other info) is stored correctly, we <strong>Reverse Geocode</strong> the location of the coffee into a meaningful street address and store that.</p>
+<p>Introduce the following method into your <code>AddFragment</code></p>
+<pre><code class="lang-java">private String getAddressFromLocation( Location location ) {
+       Geocoder geocoder = new Geocoder( getActivity() );
+
+       String strAddress = &quot;&quot;;
+       Address address;
+       try {
+           address = geocoder
+                   .getFromLocation( location.getLatitude(), location.getLongitude(), 1 )
+                   .get( 0 );
+           strAddress = address.getAddressLine(0) +
+                   &quot; &quot; + address.getAddressLine(1) +
+                   &quot; &quot; + address.getAddressLine(2);
+       }
+       catch (IOException e ) {
+       }
+
+       return strAddress;
+   }</code></pre>
+<p>and see if you can successfully achieve something along the lines of</p>
+<p>this (before)
+<img src="img/mapaddress1.png" alt=""></p>
+<p>and then this (after)</p>
+<p><img src="img/mapaddress2.png" alt=""></p>
+<p>Hint : you&#39;ll have to make a few changes to the Coffee class as well as when you create the coffee before posting it to the server (Well that&#39;s how I did it anyway!)</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="Solution">
+            <h1>Solution</h1>
+<p>This is a solution to the lab:</p>
+<ul>
+<li><a href="archives/CoffeeMate.8.0.Solution.zip">CoffeeMate.8.0.Solution</a></li>
+</ul>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab=".">
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <script>
+    $(document).on('keydown', function(e) {
+  e = e || window.event;
+  var nextTab;
+  switch (e.which || e.keyCode) {
+    case 37: // left
+      nextTab = $('.tab-menu a[data-tab].active').prev('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').last();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+
+    case 39: // right
+      nextTab = $('.tab-menu a[data-tab].active').next('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').first();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+  }
+});
+
+    $(document).ready(function() {
+  $('img').addClass('ui image');
+
+  $('.ui.embed').embed();
+
+  const $images = $('.lab img');
+  jQuery.each($images, function(i) {
+    if ($images[i].alt.length > 0) {
+      const divImg = $(document.createElement('div')).addClass(
+        'ui basic segment',
+      );
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass(
+        'ui blue ribbon label',
+      );
+      divLabel.append($images[i].alt);
+      $(divLabel).insertBefore($images[i]);
+    }
+  });
+
+  $('.ui.menu .item').tab({
+    history: true,
+    historyType: 'hash',
+  });
+
+  $('.popup').popup();
+
+  $('.ui.sidebar')
+    .sidebar({ context: $('.pushable') })
+    .sidebar('setting', 'transition', 'slide out')
+    .sidebar('attach events', '#toc');
+});
+
+  </script>
+
+
+
+  <div class="ui bottom fixed borderless right menu">
+    <div class="ui right small menu">
+      <div class="ui tiny basic message segment">
+         Powered by <a href="https://github.com/edeleastar/tutors-ts">tutors-ts.</a> 
+      </div>
+    </div>
+  </div>
+
+  </body>
+
+</html>
