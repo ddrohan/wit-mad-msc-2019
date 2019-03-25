@@ -7,7 +7,7 @@
     "properties" : {"highlightstyle":"railscasts","slack":null,"moodle":null,"youtube":"https://www.youtube.com/channel/UCU_5o6ywJxcv0CMOUX65F7g","parent":"http://ddrohan.github.io/","courseurl":"http://ddrohan.github.io/wit-mad-msc-2019/","credits":"David Drohan, WIT","courseicon":"grey newspaper"},
   
   "type" : "course",
-  "title" : "Mobile Application Development ",
+  "title" : "Mobile Application Development (MSc) ",
   "img" : "",
   "videoid" : "",
   "objectives" : "<p>Welcome to the Mobile Application Development Module. The primary objective of this course will be to provide a further introduction to developing modern Android Applications in Java. The course will comprise of a series of Talks + labs exploring the Android development ecosystem in increasing detail. Our objective is to provide the student with the skills required to construct a relatively complex Android application. A good knowledge of Java and programming is assumed.</p>",
