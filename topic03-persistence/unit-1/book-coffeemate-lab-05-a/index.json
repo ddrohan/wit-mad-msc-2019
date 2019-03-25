@@ -1,0 +1,53 @@
+
+
+
+  {
+  
+  
+    "properties" : {},
+  
+  "type" : "lab",
+  "title" : "Lab-05-a",
+  "img" : "img/main.png",
+  "videoid" : "none",
+  "objectives" : "<p>This lab continues our Case Study <b>CoffeeMate</b> and implements persistence (through an SQLite Database) in an Android App.</p>",
+  "folder" : "book-coffeemate-lab-05-a",
+  "link" : "index.html",
+  "los": [
+   ]
+,
+  "chapters" : [
+  
+    {
+    "title": "# Objectives",
+    "shortTitle": "Lab-05-a",
+    "contentMd" : "# Objectives\n\nThis lab continues our Case Study <b>CoffeeMate</b> and implements persistence (through an SQLite Database) in an Android App.\n"
+    },
+  
+    {
+    "title": "# Setup - Starter Code",
+    "shortTitle": "01",
+    "contentMd" : "# Setup - Starter Code\n\nYou can continue on with your own version of <b>CoffeeMate</b> for this lab, but if you wish, you can download the starter code here - [CoffeeMate.5a.0.Starter](archives/CoffeeMate.5a.0.Starter.zip).\n\nIn this lab, you are required to do the following:\n\n- Add Database Support to CoffeeMate to manage our coffees which will allow them to be persisted in an SQLite database\n\nThe following steps will guide you through these requirements, but first you'll need to download some helper classes [here](archives/database.zip) to make this lab a bit easier.\n\nOnce you've downloaded the archive, add them to a new ***ie.cm.db*** package in your project.\n\nYou'll get a small error in your Coffee Model, so fix that (just change the type and comment out the relevant line in the constructor).\n\nTake a few moments to investigate the classes and familiarise yourself with the methods you'll be using. There are a number of classes you'll need to modify to add database support to your project.\n"
+    },
+  
+    {
+    "title": "# App Refactoring - Adding Database Support",
+    "shortTitle": "02",
+    "contentMd" : "# App Refactoring - Adding Database Support\n\nOnce you've imported the necessary Database classes and placed them in the correct package, (and fixed any errors) this step is relatively straight forward - all you have to do is replace the method calls that manages the **coffeeList** with the respective **dbManager** calls.\n\n The first thing you need to do is create an instance of ***DBManager*** in **CofeeMateApp.java** and both open/close the database when necessary.\n\nOur DBManager instance inside our Application Object should now look like this :\n\n~~~java\npublic class CoffeeMateApp extends Application {    \n    //public List <Coffee>  coffeeList = new ArrayList<Coffee>();    \n    public DBManager dbManager = new DBManager(this);    \n\n    @Override    \n    public void onCreate()    \n    {        \n        super.onCreate();        \n        Log.v(\"coffeemate\", \"CoffeeMate App Started\");        \n        dbManager.open();    \n    }    \n\n    @Override    \n    public void onTerminate()\n    {        \n    super.onTerminate();        \n    dbManager.close();    \n    }\n}\n~~~\n\nOnce you make this change (and save the file) you'll get a number of errors, which actually indicates which classes you need to now update and add the database calls (and remove the coffeeList calls). Each error requires only one line of code to be fixed, so have a go and updating each of the classes (and we'll have a look at the solution at the end of the Practical Lab).\n\nOnce you fix all the errors, and run the app again, you should see your coffee list - but this time those coffees are stored in a database.\n\nAnd as a final check, if you call the ***setupList\\(\\)*** method of the ***DBManager*** reference in your **CoffeeMateApp** reference 'app' (replacing the existing setup method in 'Home') you should see the following list:\n\n![](img/sqlitescreen1.png)\n\nand if you choose the menu (assuming you've downloaded the starter code)\n\n![](img/sqlitescreen2.png)\n"
+    },
+  
+    {
+    "title": "# App Refactoring - Editing / Deleting Multiple Coffees",
+    "shortTitle": "03",
+    "contentMd" : "# App Refactoring - Editing / Deleting Multiple Coffees\n\nAfter some testing you may find that your adapter isn't functioning as expected in certain circumstances when deleting multiple coffees. This is due to the fact that our data is now persistent, so depending on 'where you are', so to speak, some slight refactoring of our <b>deleteCoffees()</b> is required, like so\n\n~~~java\npublic void deleteCoffees(ActionMode actionMode)\n  {\n    Coffee c = null;\n    for (int i = listAdapter.getCount() - 1; i >= 0; i--) {\n      if (listView.isItemChecked(i)) {\n        activity.app.dbManager.delete(listAdapter.getItem(i).coffeeId); //delete from DB\n        listAdapter.coffeeList.remove(listAdapter.getItem(i)); // update adapters data\n      }\n    }\n\n    actionMode.finish();\n\n    if (favourites) {\n      //Update the filters data\n      coffeeFilter = new CoffeeFilter(activity.app.dbManager.getAll(),\"favourites\",listAdapter);\n      coffeeFilter.filter(null);\n    }\n    listAdapter.notifyDataSetChanged();\n  }\n~~~\n\nAnd make sure you test you 'Edit' also, as there's some refactoring required here also\n\n`HINT : You'll need to use your Application Object reference to hook into your database, before you can Update`\n\nEven after you've refactored your `EditFragment` you may notice that on returning to the 'Home Screen' the coffee hasn't been updated (even though it has been in the database).\n\nThere's a few options here to fix this, you could go with creating a new `Fragment Transaction` and replacing the 'Home Screen' `CoffeeFragment` with a new version of itself, like so\n\n~~~java\ngetActivity().setTitle(R.string.recentlyViewedLbl);\nFragment fragment = CoffeeFragment.newInstance();\n((CoffeeFragment)fragment).favourites = false;\ngetActivity().getSupportFragmentManager()\n        .beginTransaction().replace(R.id.homeFrame, fragment)\n        .addToBackStack(null)\n        .commit();\n~~~\n\nThis is a fix for this particular bug, but doesn't handle the 'Back Button' through multiple screens (another bug!! test it and see) so I went with simply moving\n\n~~~java\nlistAdapter = new CoffeeListAdapter(activity, this, activity.app.dbManager.getAll());\n coffeeFilter = new CoffeeFilter(activity.app.dbManager.getAll(),\"all\",listAdapter);\n~~~\n\nfrom the `onCreate()` method to the `onCreateView()` method and make sure you call\n\n~~~java\n super.onCreateView(inflater,container,savedInstanceState);\n~~~\n\nin the subclass `SearchFragment` method, to avoid a NullPointerException on setting the filter.\n\nTest again to confirm and go have a coffee!\n\nWell Done!\n"
+    },
+  
+    {
+    "title": "# Solution",
+    "shortTitle": "Solution",
+    "contentMd" : "# Solution\n\nThis is a solution to the lab:\n\n* [CoffeeMate.5a.0.Solution](archives/CoffeeMate.5a.0.Solution.zip)\n"
+    }
+  
+  ]
+  }
+

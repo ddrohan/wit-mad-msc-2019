@@ -1,0 +1,59 @@
+
+
+
+  {
+  
+  
+    "properties" : {},
+  
+  "type" : "lab",
+  "title" : "Lab-06-b",
+  "img" : "img/main.png",
+  "videoid" : "none",
+  "objectives" : "<p>This lab continues our Case Study <strong>CoffeeMate</strong> with the introduction of a <strong>RETROFIT</strong> API to interact with a Node Web Server.</p>",
+  "folder" : "book-coffeemate-lab-06-b",
+  "link" : "index.html",
+  "los": [
+   ]
+,
+  "chapters" : [
+  
+    {
+    "title": "# Objectives",
+    "shortTitle": "Lab-06-b",
+    "contentMd" : "# Objectives\n\nThis lab continues our Case Study **CoffeeMate** with the introduction of a **RETROFIT** API to interact with a Node Web Server.\n"
+    },
+  
+    {
+    "title": "# Setup - Starter Code, Configuring Retrofit & Getting All Coffees",
+    "shortTitle": "01",
+    "contentMd" : "# Setup - Starter Code, Configuring Retrofit & Getting All Coffees\n\nThis is the CoffeeMate Android app as we left it with the **Volley** lab : [CoffeeMate.6a.0](archives/CoffeeMate.6a.0.Solution.zip).\n\nIf you have completed that lab, then you can use your own project. If not, use the above archive.\n\nFirst we need to add a few `dependencies` so open your `app/build.gradle` and include the following\n\n~~~xml\nimplementation 'com.squareup.retrofit2:retrofit:2.3.0'\nimplementation 'com.squareup.retrofit2:converter-gson:2.3.0'\n~~~\n\nOpen your `androidManifext.xml` file - and confirm/insert this new permission entry:\n\n~~~xml\n    <uses-permission android:name=\"android.permission.INTERNET\"/>\n~~~\n\nThis should be entered before the `<application>` element as shown here:\n\n~~~xml\n<manifest...\n\n    <uses-permission android:name=\"android.permission.INTERNET\"/>\n\n    <application\n      ....\n      ....\n      ....\n</manifest>\n~~~\n\nand make sure to 'Sync' your project.\n\nNOTE : If you get a `Clear Text Traffic` Error you'll need to add\n\n~~~xml\nandroid:usesCleartextTraffic=\"true\"\n~~~\n\nto your **application** tag, in your manifest file.\n\n\nNext, In the **api** package, add the following class to represent the JSON response\n\n~~~java\npublic class CoffeeWrapper {\n    public int status;\n    public String message;\n    public List<Coffee> data;\n}\n~~~\n\nHere's what our json looks like from the server.\n\n![](img/coffeewrapper.png)\n\n\nand then introduce this `CoffeeService` interface, and fix any import errors\n\n~~~java\npublic interface CoffeeService\n{\n    @GET(\"/coffees\")\n    Call<CoffeeWrapper> getAll();\n\n    @GET(\"/coffees/{id}\")\n    Call<CoffeeWrapper> get(@Path(\"id\") String id);\n\n    @DELETE(\"/coffees/{id}\")\n    Call<CoffeeWrapper> delete(@Path(\"id\") String id);\n\n    @POST(\"/coffees\")\n    Call<CoffeeWrapper> post(@Body Coffee coffee);\n\n    @PUT(\"/coffees/{id}\")\n    Call<CoffeeWrapper> put(@Path(\"id\") String id,\n                     @Body Coffee coffee);\n}\n~~~\n\nThis class will server as a local interface for interacting with the remote service (deployed to heroku).\n\nNext, in your `CoffeeMateApp` add\n\n~~~java\npublic CoffeeService coffeeService;\npublic String serviceURL = \"http://coffeemate-nodeserver.herokuapp.com\";\n~~~\n\nand in your **onCreate()** add\n\n~~~java\nGson gson = new GsonBuilder().create();\n\nOkHttpClient okHttpClient = new OkHttpClient.Builder()\n            .connectTimeout(30, TimeUnit.SECONDS)\n            .writeTimeout(30, TimeUnit.SECONDS)\n            .readTimeout(30, TimeUnit.SECONDS)\n            .build();\n\nRetrofit retrofit = new Retrofit.Builder()\n            .baseUrl(serviceURL)\n            .addConverterFactory(GsonConverterFactory.create(gson))\n            .client(okHttpClient)\n            .build();\n\ncoffeeService = retrofit.create(CoffeeService.class);\n~~~\n\nMake your `CoffeeFragment` implement the following interface\n\n~~~java\nCallback<CoffeeWrapper>\n~~~\n\n![](img/methods.png)\n\nadd\n\n~~~java\npublic Call<CoffeeWrapper>  callRetrieve;\n~~~\n\nand\n\n~~~java\npublic void getAllCoffees() {\n    callRetrieve = app.coffeeService.getAll();\n    callRetrieve.enqueue(this);\n  }\n~~~\n\nand finally, add the above call to your **onResume()**, replacing your ***Volley APi*** call.\n\nFor completeness, add the following to your `Base` class\n\n~~~java\npublic void showLoader(String message) {\n     if (!loader.isShowing()) {\n         if(message != null)loader.setTitle(message);\n         loader.show();\n     }\n }\n\n public void hideLoader() {\n     if (loader.isShowing())\n         loader.dismiss();\n }\n~~~\n\nand then **DELETE** (yes, Delete) both your `CoffeeApi` and `VolleyListener` classes.\n\nDon't forget to remove/comment out any other **Volley** references (we'll be refactoring the app as we go), fix any errors and run your app to confirm you can still download/Get all the coffees on the server (along with your favourites).\n\nFor Reference, your **onResume()** should look like this\n\n~~~java\npublic void onResume() {\n  super.onResume();\n  getAllCoffees();\n  updateView();\n}\n~~~\n"
+    },
+  
+    {
+    "title": "# Adding a Coffee to our Server",
+    "shortTitle": "02",
+    "contentMd" : "# Adding a Coffee to our Server\n\nAt this stage, we've made a simple **GET** request on the Server - now let's make some **POST** Requests using **Retrofit** and add a coffee to the list maintained on the server.\n\nFirst, ensure your `AddFragment` implements the necessary interface\n\n~~~java\nCallback<CoffeeWrapper>\n~~~\n\nand add the following to your list of variables\n\n~~~java\npublic Call<CoffeeWrapper>  callCreate;\n~~~\n\nNow, using something like\n\n~~~java\ncallCreate = app.coffeeService.post(c);\ncallCreate.enqueue(this);\n~~~\n\nsee can you successfully implement the 'Add' feature, but using **RETROFIT**.\n"
+    },
+  
+    {
+    "title": "# Updating a Coffee on the Server",
+    "shortTitle": "03",
+    "contentMd" : "# Updating a Coffee on the Server\n\n Updating a coffee isn't as simple and straightforward as the last step, in that we need to\n\n- display the coffee details (that the user has selected) on the Edit Screen via a **GET** request\n\n- send a **PUT** request to update our coffee on the server\n\n- return the user to the screen they were on before they chose to edit their coffee (**NOT** the Home Screen as with the 'Add' option)\n\nYou might think the first thing to do is have our `EditFragment` implement the necessary interface (as we have done previously) with\n\n~~~java\nCallback<CoffeeWrapper>\n~~~\n\nbut we need to make multiple different calls (GETs & PUTs) in the one `EditFragment`, so simply implementing the interface won't meet our needs in this instance.\n\nWe need to create **Anonymous** Retrofit calls and run them at the required times, so first, add the following to your declarations\n\n~~~java\npublic Call<CoffeeWrapper> callGet, callUpdate;\n~~~\n\nNext, replace, and complete your **onCreate()** with the following\n\n~~~java\n@Override\n    public void onCreate(Bundle savedInstanceState) {\n        super.onCreate(savedInstanceState);\n        app = (CoffeeMateApp) getActivity().getApplication();\n\n        if (getArguments() != null) {\n            callGet = app.coffeeService.get(getArguments().getString(\"coffeeId\"));\n            callGet.enqueue(new Callback<CoffeeWrapper>() {\n                @Override\n                public void onResponse(Call<CoffeeWrapper> call, Response<CoffeeWrapper> response) {\n                    // Get the body of the response\n                    // assign it to the local Coffee variable 'aCoffee'\n                    // update your UI to display the coffee details to edit\n                }\n\n                @Override\n                public void onFailure(Call<CoffeeWrapper> call, Throwable t) {\n\n                }\n            });\n        }\n    }\n~~~\n\nOnce you can see the coffee details, the last thing to do is update the coffee on the server and return the user back to the screen there were previously on.\n\nYou'll need to do something like this\n\n~~~java\ncallUpdate = app.coffeeService.put(aCoffee._id,aCoffee);\ncallUpdate.enqueue(new Callback<CoffeeWrapper>() . . .);\n~~~\n\nso without referring to the lecture material (not too much anyway) have a go at completing this step.\n"
+    },
+  
+    {
+    "title": "# Deleting Coffees from the Server",
+    "shortTitle": "04",
+    "contentMd" : "# Deleting Coffees from the Server\n\nThis step isn't as simple as the equivalent step in the **VOLLEY** lab as we need to create another **Anonymous** call for deleting, as our `CoffeeFragment` already implements our interface - but we'll try and make it as simple as we can :)\n\nFirst, add the following to your declarations\n\n~~~java\npublic Call<CoffeeWrapper> callDelete;\n~~~\n\nNext, add, and complete the following method (there's very little to do here)\n\n~~~java\npublic void deleteCoffee(String id) {\n      callDelete = app.coffeeService.delete(id);\n      callDelete.enqueue(new Callback<CoffeeWrapper>() {\n          @Override\n          public void onResponse(Call<CoffeeWrapper> call, Response<CoffeeWrapper> response) {\n\n          }\n\n          @Override\n          public void onFailure(Call<CoffeeWrapper> call, Throwable t) {\n\n          }\n      });\n  }\n~~~\n\nYou then need to call the above method wherever you were making your **VOLLEY** 'delete' requests.\n\nTo get you started, you'll need this in your **deleteCoffees()** method\n\n~~~java\ndeleteCoffee(listAdapter.getItem(i)._id);\n~~~\n\nand this in your **onCoffeeDelete()**\n\n~~~java\ndeleteCoffee(coffee._id);\n~~~\n\nIf you notice your list isn't updating after you delete 1 or more coffees make sure you're calling\n\n~~~java\ngetAllCoffees()\n~~~\n\nafter you delete, to get the latest version of your list. \n"
+    },
+  
+    {
+    "title": "#Solution",
+    "shortTitle": "Solution",
+    "contentMd" : "#Solution\n\nThis is the solution which uses a Web Service and **Retrofit** to manage the Coffees in the app:\n\n- [CoffeeMate.6b.0](archives/CoffeeMate.6b.0.Solution.zip)\n"
+    }
+  
+  ]
+  }
+

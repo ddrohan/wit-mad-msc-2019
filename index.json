@@ -1,0 +1,733 @@
+
+
+
+  {
+  
+  
+    "properties" : {"highlightstyle":"railscasts","slack":null,"moodle":null,"youtube":"https://www.youtube.com/channel/UCU_5o6ywJxcv0CMOUX65F7g","parent":"http://ddrohan.github.io/","courseurl":"http://ddrohan.github.io/wit-mad-msc-2019/","credits":"David Drohan, WIT","courseicon":"grey newspaper"},
+  
+  "type" : "course",
+  "title" : "Mobile Application Development ",
+  "img" : "",
+  "videoid" : "",
+  "objectives" : "<p>Welcome to the Mobile Application Development Module. The primary objective of this course will be to provide a further introduction to developing modern Android Applications in Java. The course will comprise of a series of Talks + labs exploring the Android development ecosystem in increasing detail. Our objective is to provide the student with the skills required to construct a relatively complex Android application. A good knowledge of Java and programming is assumed.</p>",
+  "folder" : "wit-mad-msc-2019",
+  "link" : "index.html",
+  "los": [
+   ]
+,
+  "topics" : [  {
+    
+    
+  
+    "properties" : {},
+  
+  "type" : "topic",
+  "title" : "Assignment ",
+  "img" : "topic.png",
+  "videoid" : "",
+  "objectives" : "<p>Specification for the course assignment.</p>",
+  "folder" : "topic00",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : "Assignment ",
+  "img" : "assignment.png",
+  "videoid" : "none",
+  "objectives" : "<p>A detailed specification of the Mobile Application Development assignment.</p>",
+  "folder" : "talk-1-assignment",
+  "link" : "assignment.pdf",
+  "los": [
+   ]
+
+    } 
+   ]
+
+  },
+ {
+    
+    
+  
+    "properties" : {},
+  
+  "type" : "topic",
+  "title" : " Module Overview & Background ",
+  "img" : "topic.png",
+  "videoid" : "",
+  "objectives" : "<p>Here you&#39;ll find a brief talk about myself, my background and what this Module will cover in the different sections.</p>",
+  "folder" : "topic00-profile",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : "01: Module Overview ",
+  "img" : "intro.png",
+  "videoid" : "none",
+  "objectives" : "<p>Here you&#39;ll find a brief talk about myself, my background and what this Module will cover in the different sections.</p>",
+  "folder" : "talk-1-intro",
+  "link" : "intro.pdf",
+  "los": [
+   ]
+
+    } 
+   ]
+
+  },
+ {
+    
+    
+  
+    "properties" : {},
+  
+  "type" : "topic",
+  "title" : "Overview & Tools ",
+  "img" : "topic.png",
+  "videoid" : "",
+  "objectives" : "<p>In this section we take a first look at Android, it&#39;s User Interface and the major components that make up an Android application. When you&#39;re finished this section you should be familiar with the Android ecosystem, be aware of the major Android application components, be able to build a simple Android app and be able to deploy an Android app to an emulator and run/test it</p>",
+  "folder" : "topic01-overview-and-tools",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "unit",
+  "title" : "Overview & Tools ",
+  "img" : "talk-1-app-design/01.app.design.png",
+  "videoid" : "",
+  "objectives" : "",
+  "folder" : "unit-1",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : "00: App Design ",
+  "img" : "01.app.design.png",
+  "videoid" : "none",
+  "objectives" : "<p>Here we discuss app design in general, the frameworks available to the app developer and the different approaches that can be followed in the design and development of a mobile app.</p>",
+  "folder" : "talk-1-app-design",
+  "link" : "01.app.design.pdf",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : "01: Android Overview ",
+  "img" : "intro.to.android.png",
+  "videoid" : "none",
+  "objectives" : "<p>Here we take a brief look and Android, explore the general context of the android User Experience, it&#39;s role in the mobile platform space and the components that make up the the system. We are particularly interested in the version numbers and how version in general is managed.</p>",
+  "folder" : "talk-1-intro-to-android",
+  "link" : "intro.to.android.pdf",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : "02: Android Anatomy ",
+  "img" : "anatomy.jpg",
+  "videoid" : "none",
+  "objectives" : "<p>Here we take a closer look at the Android eco-system and the components that make up this system. We are particularly interested in both the android activity and fragment life-cycles and the android components that we utilise to build an android app.</p>",
+  "folder" : "talk-2-android-anatomy",
+  "link" : "anatomy.pdf",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "lab",
+  "title" : "HelloWorld",
+  "img" : "img/main.png",
+  "videoid" : "none",
+  "objectives" : "<p>Here we discuss how to install and set up effective tools for Android application development. These include the Android Studio IDE  + an emulator. We&#39;ll also create a simple Android App (HelloWorld), and be able to manage it within the Android Studio environment.</p>",
+  "folder" : "book-ahelloworld-lab-01",
+  "link" : "index.html",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "lab",
+  "title" : "Lab-01",
+  "img" : "img/main.png",
+  "videoid" : "none",
+  "objectives" : "<p>This lab introduces our Case Study <b>CoffeeMate</b> with a look at some of the basic features we can implement in an Android App.</p>",
+  "folder" : "book-coffeemate-lab-01",
+  "link" : "index.html",
+  "los": [
+   ]
+
+    } 
+   ]
+
+    } 
+   ]
+
+  },
+ {
+    
+    
+  
+    "properties" : {},
+  
+  "type" : "topic",
+  "title" : "UI Design, Navigation & App Structure ",
+  "img" : "topic.jpg",
+  "videoid" : "",
+  "objectives" : "<p>Here we discuss app design in general, the frameworks available to the app developer and the different approaches that can be followed in the design and development of a mobile app. We begin with some of the more common widgets and complete the material with some of the more advanced UI artifacts used in the design of android apps, focusing on the android UI guidelines for effective navigation.</p>",
+  "folder" : "topic02-ui-design",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "unit",
+  "title" : "UI Design & App Structure ",
+  "img" : "talk-3-ui-design-1/ui.design.1.png",
+  "videoid" : "",
+  "objectives" : "",
+  "folder" : "unit-1",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : "03: UI Design - Part 1 ",
+  "img" : "ui.design.1.png",
+  "videoid" : "none",
+  "objectives" : "<p>Here we discuss app design in general, the frameworks available to the app developer and the different approaches that can be followed in the design and development of a mobile app.</p>",
+  "folder" : "talk-3-ui-design-1",
+  "link" : "ui.design.1.pdf",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : "04: UI Design - Part 2 ",
+  "img" : "ui.design.2.png",
+  "videoid" : "none",
+  "objectives" : "<p>Here we build on the previous section and look at some of the more advanced UI features used in the design of android apps and focus on filtering and searching.</p>",
+  "folder" : "talk-4-ui-design-2",
+  "link" : "ui.design.2.pdf",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "lab",
+  "title" : "Lab-02",
+  "img" : "img/main.png",
+  "videoid" : "none",
+  "objectives" : "<p>In this Lab, <b>CoffeeMate.2.0</b> we will build on the previous lab and add in some new features and UI Design. On completion of this lab you&#39;ll be able to use Bundles, Custom Layouts, Custom Adapters and Fragments.</p>",
+  "folder" : "book-coffeemate-lab-02",
+  "link" : "index.html",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "lab",
+  "title" : "Lab-03",
+  "img" : "img/main.png",
+  "videoid" : "none",
+  "objectives" : "<p>In this Lab, <b>CoffeeMate.3.0</b> we will again build on the previous lab and add in more new features and UI Design. On completion of this lab you&#39;ll be able to use multiple Fragments in different Activities, use Spinners (dropdown lists), filter lists and use the <b>Application</b> Object</p>",
+  "folder" : "book-coffeemate-lab-03",
+  "link" : "index.html",
+  "los": [
+   ]
+
+    } 
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "unit",
+  "title" : "UI Navigation ",
+  "img" : "talk-5-ui-design-3/ui.design.3.jpg",
+  "videoid" : "",
+  "objectives" : "",
+  "folder" : "unit-2",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : "05: UI Navigation ",
+  "img" : "ui.design.3.jpg",
+  "videoid" : "none",
+  "objectives" : "<p>Here we investigate some of the more advanced UI artifacts used in the design of android apps and focus on the android UI guidelines for effective navigation.</p>",
+  "folder" : "talk-5-ui-design-3",
+  "link" : "ui.design.3.pdf",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "lab",
+  "title" : "Lab-04",
+  "img" : "img/main.png",
+  "videoid" : "none",
+  "objectives" : "<p>This lab continues our Case Study <b>CoffeeMate</b> but with a major refactoring of the UI (using a Navigation Drawer) and a more detailed look at the use of Fragments in an Android App.</p>",
+  "folder" : "book-coffeemate-lab-04",
+  "link" : "index.html",
+  "los": [
+   ]
+
+    } 
+   ]
+
+    } 
+   ]
+
+  },
+ {
+    
+    
+  
+    "properties" : {},
+  
+  "type" : "topic",
+  "title" : "Data Persistence in Android ",
+  "img" : "topic.png",
+  "videoid" : "",
+  "objectives" : "<p>This first application is already composed of a range of classes related to each other via different types of relationships. We can capture this design graphically in UML, exploring the true nature of the structure of the app. We then move on to a new version of the app though which we will explore the major features of the SDK.</p>",
+  "folder" : "topic03-persistence",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "unit",
+  "title" : "Data Persistence using Shared Prefs, SQLite & Realm ",
+  "img" : "talk-6-persistence/persistence.jpg",
+  "videoid" : "",
+  "objectives" : "",
+  "folder" : "unit-1",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : "06: Android & Shared Preferences ",
+  "img" : "persistence.jpg",
+  "videoid" : "none",
+  "objectives" : "<p>This simple application is already composed of a range of classes related to each other in via different types of relationships. We can capture this design graphically in UML, exploring the true nature of the structure of the app.</p>",
+  "folder" : "talk-6-persistence",
+  "link" : "persistence.pdf",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : "07: Android & SQLite ",
+  "img" : "sqlite.jpg",
+  "videoid" : "none",
+  "objectives" : "<p>This simple application is already composed of a range of classes related to each other in via different types of relationships. We can capture this design graphically in UML, exploring the true nature of the structure of the app.</p>",
+  "folder" : "talk-7-sqlite",
+  "link" : "sqlite.pdf",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : "08: Android & Realm ",
+  "img" : "realm.png",
+  "videoid" : "F0FiqsGT20U",
+  "objectives" : "<p>This simple application is already composed of a range of classes related to each other in via different types of relationships. We can capture this design graphically in UML, exploring the true nature of the structure of the app.</p>",
+  "folder" : "talk-8-realm",
+  "link" : "realm.pdf",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "lab",
+  "title" : "Lab-05-a",
+  "img" : "img/main.png",
+  "videoid" : "none",
+  "objectives" : "<p>This lab continues our Case Study <b>CoffeeMate</b> and implements persistence (through an SQLite Database) in an Android App.</p>",
+  "folder" : "book-coffeemate-lab-05-a",
+  "link" : "index.html",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "lab",
+  "title" : "Lab-05-b",
+  "img" : "img/main.png",
+  "videoid" : "none",
+  "objectives" : "<p>This lab continues our Case Study <b>CoffeeMate</b> and implements persistence (through a Realm Database) in an Android App.</p>",
+  "folder" : "book-coffeemate-lab-05-b",
+  "link" : "index.html",
+  "los": [
+   ]
+
+    } 
+   ]
+
+    } 
+   ]
+
+  },
+ {
+    
+    
+  
+    "properties" : {},
+  
+  "type" : "topic",
+  "title" : "Multithreading & Networking ",
+  "img" : "topic.png",
+  "videoid" : "",
+  "objectives" : "<p>In this section we take a brief look at persistence within an Android app (via SQLite) but focus mainly on how the Android OS implements multithreading and deals with running tasks in the background. We also investigate the different approaches available to the developer for making http calls and API requests.</p>",
+  "folder" : "topic04-networking",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "unit",
+  "title" : "Networking with Volley & Retrofit ",
+  "img" : "talk-1-volley/networking.1.png",
+  "videoid" : "",
+  "objectives" : "",
+  "folder" : "unit-1",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : "09: Android & Volley ",
+  "img" : "networking.1.png",
+  "videoid" : "yhv8l9F44qo",
+  "objectives" : "<p>In this section we take a brief look at persistence within an Android app (via SQLite) but focus mainly on how the Android OS implements multithreading and deals with running tasks in the background. We also investigate the different approaches available to the developer for making http calls and API requests.</p>",
+  "folder" : "talk-1-volley",
+  "link" : "networking.1.pdf",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : "10: Android & Retrofit ",
+  "img" : "android.retrofit.png",
+  "videoid" : "R4XU8yPzSx0",
+  "objectives" : "<p>Rework the CoffeeMate application to access and update the REST interface exposed by coffeemateweb.herokuapp.com.</p>",
+  "folder" : "talk-2-retrofit",
+  "link" : "android.retrofit.pdf",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "lab",
+  "title" : "Lab-06-a",
+  "img" : "img/main.png",
+  "videoid" : "none",
+  "objectives" : "<p>This lab continues our Case Study <b>CoffeeMate</b> with the introduction of a <strong>VOLLEY API</strong> to interact with a Node Web Server.</p>",
+  "folder" : "book-coffeemate-lab-06-a",
+  "link" : "index.html",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "lab",
+  "title" : "Lab-06-b",
+  "img" : "img/main.png",
+  "videoid" : "none",
+  "objectives" : "<p>This lab continues our Case Study <strong>CoffeeMate</strong> with the introduction of a <strong>RETROFIT</strong> API to interact with a Node Web Server.</p>",
+  "folder" : "book-coffeemate-lab-06-b",
+  "link" : "index.html",
+  "los": [
+   ]
+
+    } 
+   ]
+
+    } 
+   ]
+
+  },
+ {
+    
+    
+  
+    "properties" : {},
+  
+  "type" : "topic",
+  "title" : "Google Services ",
+  "img" : "topic.jpg",
+  "videoid" : "",
+  "objectives" : "<p>Google Services is a layer of services Android apps can use. This includes location services, google sign-in, cloud, contacts, maps etc. Here we focus on just 3 of the services - Google+ Sign-in, Location and Maps.</p>",
+  "folder" : "topic05-google-services",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "unit",
+  "title" : "Google Services, Sign In, Location & Maps ",
+  "img" : "talk-1-google-1/google.signin.png",
+  "videoid" : "",
+  "objectives" : "",
+  "folder" : "unit-1",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : "11: Google Sign-in Integration ",
+  "img" : "google.signin.png",
+  "videoid" : "N03uShHdWhE?list=PLOU2XLYxmsILqH8Sl9nbNIc_B6v2WhLg8",
+  "objectives" : "<p>Here we discuss the steps necessary to integrate Google Sign-in into an Android app, using our Case Study (CoffeeMate) and the labs to demonstrate.</p>",
+  "folder" : "talk-1-google-1",
+  "link" : "google.signin.pdf",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : "12: Google Location Services  ",
+  "img" : "location.jpg",
+  "videoid" : "5MIBNOTD_mM",
+  "objectives" : "<p>Here we discuss the steps necessary to integrate Google Location Services into an Android app, using our Case Study (CoffeeMate) and the labs to demonstrate.</p>",
+  "folder" : "talk-2-google-2",
+  "link" : "location.pdf",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : "13: Google Maps ",
+  "img" : "maps.jpg",
+  "videoid" : "Ol6y6J3etMY?list=PLAwxTw4SYaPlzI930Uthz9b814Q7SpPSB",
+  "objectives" : "<p>Here we discuss the steps necessary to integrate Google Maps into an Android app, using our Case Study (CoffeeMate) and the labs to demonstrate.</p>",
+  "folder" : "talk-3-google-3",
+  "link" : "maps.pdf",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "lab",
+  "title" : "Lab-07",
+  "img" : "img/main.png",
+  "videoid" : "none",
+  "objectives" : "<p>This lab continues our Case Study <b>CoffeeMate</b> and once again, yet another major refactoring of the app, where we introduce some basic security using <b>Google Sign-in</b>.</p>",
+  "folder" : "book-coffeemate-lab-07",
+  "link" : "index.html",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "lab",
+  "title" : "Lab-08",
+  "img" : "img/main.png",
+  "videoid" : "none",
+  "objectives" : "<p>This lab is the final lab in the current version and completes our Case Study <b>CoffeeMate</b> with the introduction of <strong>Location Awareness</strong> and <strong>Google Maps</strong> in version <b>CoffeeMate.8.0</b>.</p>",
+  "folder" : "book-coffeemate-lab-08",
+  "link" : "index.html",
+  "los": [
+   ]
+
+    } 
+   ]
+
+    } 
+   ]
+
+  },
+ {
+    
+    
+  
+    "properties" : {},
+  
+  "type" : "topic",
+  "title" : "Supplementary Material ",
+  "img" : "topic.png",
+  "videoid" : "",
+  "objectives" : "<p>Here you can find some presentations that we didn&#39;t get a chance to cover during the module. They&#39;re not critical, but would be worth a read if you are unfamiliar with the Android World.</p>",
+  "folder" : "topic08-supplementary",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : "Application Structure ",
+  "img" : "app-structure.png",
+  "videoid" : "none",
+  "objectives" : "<p>This simple application is already composed of a range of classes related to each other in via different types of relationships. We can capture this design graphically in UML, exploring the true nature of the structure of the app.</p>",
+  "folder" : "talk-2-app-structure",
+  "link" : "app-structure.pdf",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : "Android UX ",
+  "img" : "ui.overview.jpeg",
+  "videoid" : "none",
+  "objectives" : "<p>Android introduced a new user interface language to the world, one that is gradually evolving in flexibility and expressiveness. Here we review the principle elements of this language and how its is incorporated into attractive and usable applications</p>",
+  "folder" : "talk-3-ui-overview",
+  "link" : "ui.overview.pdf",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : "Recap on JSON ",
+  "img" : "json.png",
+  "videoid" : "none",
+  "objectives" : "<p>Here we take a quick look at JSON and how it can be used as a format for transferring data to and from an Android app.</p>",
+  "folder" : "talk-4-json",
+  "link" : "json.pdf",
+  "los": [
+   ]
+
+    } 
+   ]
+
+  }
+ ]
+  }
+

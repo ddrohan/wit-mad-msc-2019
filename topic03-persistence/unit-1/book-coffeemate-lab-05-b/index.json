@@ -1,0 +1,59 @@
+
+
+
+  {
+  
+  
+    "properties" : {},
+  
+  "type" : "lab",
+  "title" : "Lab-05-b",
+  "img" : "img/main.png",
+  "videoid" : "none",
+  "objectives" : "<p>This lab continues our Case Study <b>CoffeeMate</b> and implements persistence (through a Realm Database) in an Android App.</p>",
+  "folder" : "book-coffeemate-lab-05-b",
+  "link" : "index.html",
+  "los": [
+   ]
+,
+  "chapters" : [
+  
+    {
+    "title": "# Objectives",
+    "shortTitle": "Lab-05-b",
+    "contentMd" : "# Objectives\n\nThis lab continues our Case Study <b>CoffeeMate</b> and implements persistence (through a Realm Database) in an Android App.\n"
+    },
+  
+    {
+    "title": "# Setup - Starter Code",
+    "shortTitle": "01",
+    "contentMd" : "# Setup - Starter Code\n\nWe'll use similar starter code as we did for the SQLite Lab, which you can download here [CoffeeMate.5b.0.Starter](archives/CoffeeMate.5b.0.Starter.zip).\n\nIn this lab, you are required to do the following:\n\n- Add Database Support to CoffeeMate to manage our coffees which will allow them to be persisted in a Realm database\n\nThe following steps will guide you through these requirements, but first you'll need to add a helper class to make this lab a bit easier.\n\n\nGo ahead and add the following dependency to your `project/build.gradle`\n\n~~~xml\nclasspath \"io.realm:realm-gradle-plugin:5.8.0\"\n~~~\n\nand this to your `app/build.gradle` (at the top)\n\n~~~xml\napply plugin: 'realm-android'\n~~~\n\nand then this in the dependencies (which we'll be using later)\n\n~~~xml\nimplementation 'io.realm:android-adapters:2.1.1'\n~~~\n\nNext, update your `Coffee` class with the following\n\n~~~java\npublic class Coffee extends RealmObject\n{\n\t@PrimaryKey\n\tpublic String coffeeId;\n\tpublic String name;\n\tpublic String shop;\n\tpublic double rating;\n\tpublic double price;\n\tpublic boolean favourite;\n\n\n\tpublic Coffee() {}\n\n\tpublic Coffee(String name, String shop, double rating, double price, boolean fav)\n\t{\n\t\tthis.coffeeId = UUID.randomUUID().toString();\n\t\tthis.name = name;\n\t\tthis.shop = shop;\n\t\tthis.rating = rating;\n\t\tthis.price = price;\n\t\tthis.favourite = fav;\n\t}\n\n\t@Override\n\tpublic String toString() {\n\t\treturn \"Coffee [name=\" + name\n\t\t\t\t+ \", shop =\" + shop + \", rating=\" + rating + \", price=\" + price\n\t\t\t\t+ \", fav =\" + favourite + \"]\";\n\t}\n}\n~~~\n\nand finally add the following class to a new `ie.cm.db` package (like you did in the previous lab)\n\n~~~java\npublic class DBManager {\n\n    public Realm realmDatabase;\n\n    public DBManager(Context context) {\n        Realm.init(context);\n\n        RealmConfiguration config = new RealmConfiguration.Builder()\n                .name(\"coffees.realm\")\n                .schemaVersion(1)\n                .build();\n\n        Realm.setDefaultConfiguration(config);\n    }\n\n    public void open() throws SQLException {\n        realmDatabase = Realm.getDefaultInstance();\n    }\n\n    public void close() {\n        realmDatabase.close();\n    }\n\n    public void add(Coffee c) {\n        realmDatabase.beginTransaction();\n        realmDatabase.copyToRealm(c);\n        realmDatabase.commitTransaction();\n    }\n\n    public void update(Coffee c, String name ,String shop, double price , double rating)\n    {\n        realmDatabase.beginTransaction();\n        c.name = name;\n        c.shop = shop;\n        c.price = price;\n        c.rating = rating;\n        realmDatabase.commitTransaction();\n    }\n\n    public void setFavourite(Coffee c, boolean value)\n    {\n        realmDatabase.beginTransaction();\n        c.favourite = value;\n        realmDatabase.commitTransaction();\n    }\n\n    // If we wanted to update individual fields we could\n    // do something like this, for example\n    public void updateName(String name, String coffeeId)\n    {\n        Coffee c = realmDatabase.where(Coffee.class)\n                .equalTo(\"coffeeId\",coffeeId)\n                .findFirst();\n        realmDatabase.beginTransaction();\n        c.name = name;\n        realmDatabase.commitTransaction();\n    }\n\n    public void delete(String coffeeId) {\n        realmDatabase.beginTransaction();\n        realmDatabase.where(Coffee.class)\n                .equalTo(\"coffeeId\",coffeeId)\n                .findAll()\n                .deleteAllFromRealm();\n        realmDatabase.commitTransaction();\n    }\n\n    public RealmResults<Coffee> getAll() {\n        RealmResults<Coffee> result = realmDatabase.where(Coffee.class)\n                .findAll();\n        return result;\n    }\n\n    public RealmResults<Coffee> getFavourites() {\n       return realmDatabase.where(Coffee.class)\n               .equalTo(\"favourite\",true)\n               .findAll();\n    }\n\n    public Coffee get(String coffeeId) {\n        return realmDatabase.where(Coffee.class)\n                .equalTo(\"coffeeId\",coffeeId)\n                .findAll()\n                .first();\n    }\n\n    public void reset() {\n        realmDatabase.beginTransaction();\n        realmDatabase.where(Coffee.class)\n                .findAll()\n                .deleteAllFromRealm();\n        realmDatabase.commitTransaction();\n    }\n}\n~~~\n\nThere'll be a few import errors to fix, but that's about it for the setup.\n\nTake a few moments to investigate the class and familiarise yourself with the methods you'll be using. There are a number of classes you'll need to modify to add database support to your project.\n"
+    },
+  
+    {
+    "title": "# App Refactoring - Adding Realm Database Support",
+    "shortTitle": "02",
+    "contentMd" : "# App Refactoring - Adding Realm Database Support\n\nOnce you've completed the setup, similar to the previous step, this step is also relatively straight forward - all you have to do is replace the method calls that manages the **coffeeList** with the respective **dbManager** Realm calls.\n\n The first thing you need to do is create an instance of ***DBManager*** in **CofeeMateApp.java** and both open/close the database when necessary.\n\nOur DBManager instance inside our Application Object should now look like this :\n\n~~~java\npublic class CoffeeMateApp extends Application {    \n    //public List <Coffee>  coffeeList = new ArrayList<Coffee>();    \n    public DBManager dbManager = new DBManager(this);    \n\n    @Override    \n    public void onCreate()    \n    {        \n        super.onCreate();        \n        Log.v(\"coffeemate\", \"CoffeeMate App Started\");        \n        dbManager.open();    \n    }    \n\n    @Override    \n    public void onTerminate()\n    {        \n    super.onTerminate();        \n    dbManager.close();    \n    }\n}\n~~~\n\nOnce you make this change (and build the project) you'll get a number of errors, which actually indicates which classes you need to now update and add the database calls (and remove the coffeeList calls). Each error requires only one line of code to be fixed, so have a go and updating each of the classes (and we'll have a look at the solution at the end of the Practical Lab).\n\nOnce you fix all the errors, and run the app again, you should see your coffee list - but this time those coffees are stored in a Realm database.\n\nAnd as a final check, if you call the ***setupCoffees()*** method of the ***DBManager*** reference in your **CoffeeMateApp** reference 'app' (replacing the existing setup method in 'Home') you should see the something like the following list:\n\n![](img/realmscreen1.png)\n\nand if you choose the menu (assuming you've downloaded the starter code)\n\n![](img/realmscreen2.png)\n"
+    },
+  
+    {
+    "title": "# App Refactoring - View Favourites & Filtering",
+    "shortTitle": "03",
+    "contentMd" : "# App Refactoring - View Favourites & Filtering\n\nIf you've carried out any kind of testing at all, you'll see that the app crashes on 'View Favourites', this is due to the fact that we are now using `Realm` objects and our `CoffeeFilter` expects to filter on `List` objects.\n\nTo rectify this, replace your existing `CoffeeFilter` with the following (fix any import errors) and test again.\n\n~~~java\npublic class CoffeeFilter extends Filter {\n\tprivate OrderedRealmCollection<Coffee> \t\toriginalCoffeeList;\n\tprivate RealmResults<Coffee> realmCoffeResults;\n\tprivate CoffeeListAdapter \tadapter;\n\tprivate boolean favourites = false;\n\tprivate DBManager dbManager;\n\n\tpublic CoffeeFilter(DBManager dbManager, CoffeeListAdapter adapter) {\n\t\tsuper();\n\t\tthis.dbManager = dbManager;\n\t\tthis.originalCoffeeList = dbManager.getAll();\n\t\tthis.adapter = adapter;\n\t}\n\n\tpublic void setFilter(String filterText) {\n\t\t//favourites = filterText.equals(\"all\") ? false : true;\n\t\tfavourites = !filterText.equals(\"all\");\n\t}\n\n\t@Override\n\tprotected FilterResults performFiltering(CharSequence prefix) {\n\t\treturn new FilterResults();\n\t}\n\n\t@Override\n\tprotected void publishResults(CharSequence prefix, FilterResults results) {\n\n\t\tif ((prefix == null || prefix.length() == 0))\n\t\t\t\tif(!favourites)\n\t\t\t\t\trealmCoffeResults = dbManager.getAll();\n\t\t\t\telse\n\t\t\t\t\trealmCoffeResults = dbManager.getFavourites();\n\t\telse {\n\t\t\trealmCoffeResults = dbManager.realmDatabase\n\t\t\t\t\t.where(Coffee.class)\n\t\t\t\t\t.equalTo(\"favourite\", favourites)\n\t\t\t\t\t.contains(\"name\", prefix.toString(), Case.INSENSITIVE)\n\t\t\t\t\t.or()\n\t\t\t\t\t.contains(\"shop\", prefix.toString(), Case.INSENSITIVE)\n\t\t\t\t\t.findAll();\n\t\t}\n\n\t\tadapter.coffeeList = realmCoffeResults;\n\n\t\tif (adapter.coffeeList.size() > 0)\n\t\t\tadapter.notifyDataSetChanged();\n\t\telse {\n\t\t\tadapter.notifyDataSetInvalidated();\n\t\t\tadapter.coffeeList = originalCoffeeList;\n\t\t}\n\t}\n}\n~~~\n"
+    },
+  
+    {
+    "title": "# App Refactoring - Editing / Deleting Multiple Coffees",
+    "shortTitle": "04",
+    "contentMd" : "# App Refactoring - Editing / Deleting Multiple Coffees\n\nAfter some more testing you may also find that your adapter isn't functioning as expected in certain circumstances when deleting multiple coffees. This is due to the fact that our data is now persistent, so depending on 'where you are', so to speak, some slight refactoring of our <b>deleteCoffees()</b> is required, like so\n\n~~~java\npublic void deleteCoffees(ActionMode actionMode)\n    {\n        Coffee c = null;\n        for (int i = listAdapter.getCount() - 1; i >= 0; i--)\n            if (listView.isItemChecked(i))\n                activity.app.dbManager.delete(listAdapter.getItem(i).coffeeId); //delete from DB\n\n        actionMode.finish();\n\n        if (favourites) {\n            //Update the filters data\n            coffeeFilter = new CoffeeFilter(activity.app.dbManager,listAdapter);\n            coffeeFilter.setFilter(\"favourites\");\n            coffeeFilter.filter(null);\n        }\n        listAdapter.notifyDataSetChanged();\n    }\n~~~\n\nJust for completeness, and to keep thing in sync with the previous lab, if you experience any rendering issues with your fragment, move\n\n~~~java\nlistAdapter = new CoffeeListAdapter(activity, this, activity.app.dbManager.getAll());\n coffeeFilter = new CoffeeFilter(activity.app.dbManager.getAll(),\"all\",listAdapter);\n~~~\n\nfrom the `onCreate()` method to the `onCreateView()` method and make sure you call\n\n~~~java\n super.onCreateView(inflater,container,savedInstanceState);\n~~~\n\nin the subclass `SearchFragment` method, to avoid a NullPointerException on setting the filter.\n\nTest again to confirm and go have a coffee!\n\nWell Done!\n"
+    },
+  
+    {
+    "title": "#Solution",
+    "shortTitle": "Solution",
+    "contentMd" : "#Solution\n\nThis is the solution to the lab:\n\n\n- [CoffeeMate.5b.0.Solution.Realm](archives/CoffeeMate.5b.0.Solution.zip)\n"
+    }
+  
+  ]
+  }
+
